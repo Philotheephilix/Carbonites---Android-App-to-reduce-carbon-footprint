@@ -1,0 +1,2 @@
+# Carbonites---Android-App-to-reduce-carbon-footprint-
+It is an Android app to calculate the amount of carbon footprint emitted by an individual by monitoring their expenses. When a person purchases food items, travel tickets or everyday essentials, the amount they spent using their card and UPI payment methods will be tracked and the system will estimate the amount of carbon footprint left by them 

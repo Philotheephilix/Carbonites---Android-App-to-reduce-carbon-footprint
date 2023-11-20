@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/main.dart';
 
 import '../main_interface/main_page.dart';
 
@@ -8,11 +9,11 @@ class LoginPage extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _login(BuildContext context) {
+  Future<void> _login(BuildContext context) async {
     String username = _usernameController.text;
     String password = _passwordController.text;
 
-    if (username == 'user' && password == 'password') {
+    if (await loginin(username, password)) {
       Navigator.push(
         context,
         MaterialPageRoute(

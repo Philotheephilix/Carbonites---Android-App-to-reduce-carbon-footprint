@@ -105,7 +105,7 @@ class ProfilePage extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            height: 150,
+            height: 148,
             width: 150,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,

@@ -1,141 +1,98 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: avoid_print
 
+import 'package:flutter/material.dart'
+    show BuildContext, Key, MaterialApp, StatelessWidget, Widget, runApp;
+import 'package:mongo_dart/mongo_dart.dart' show Db, where;
 import 'package:flutter/material.dart';
+//import 'package:pi_carbon_tracer/main_interface/main_page.dart';
+import 'main_interface/onboarding_screen.dart';
 
-void main() => runApp(MyApp());
+//import 'pages/login.dart';
+//import 'pages/stats.dart';
+//import 'pages/manage.dart';
+//import 'pages/profile.dart';
+//import 'subpages/payment_history.dart';
+
+Future<bool> loginin(String user, String pass) async {
+  var db = await DB.getDB();
+
+  if (db != null) {
+    var collection = db.collection('studentDet');
+    var val = await collection
+        .findOne(where.eq("Roll No", user).fields(["Reg No", "0"]));
+    var val1 = await collection
+        .findOne(where.eq("Reg No", pass).fields(["Roll No", user]));
+    print('Found: $val');
+    print(val1);
+    print(user);
+    print(pass);
+    if (val != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  return false;
+}
+
+void main() async {
+  var db = await DB.getDB();
+
+  if (db != null) {
+    var collection = db.collection('studentDet');
+    var val = await collection
+        .findOne(where.eq("R", "22CS151").fields(['Reg No', '311122104064']));
+    print('Found: $val');
+    print(db);
+    var collectionNames = await db.getCollectionNames();
+
+    print('Collections in the database:');
+    for (var name in collectionNames) {
+      print(name);
+    }
+  } else {
+    print('Database connection failed.');
+  }
+
+  runApp(const MyApp());
+}
+
+class DB {
+  static Db? _db = null;
+
+  static String _getConnectionString() {
+    return "mongodb+srv://maintainer_philix:qwertyuiop@carbonpi.hiozz58.mongodb.net/Project-X?retryWrites=true&w=majority";
+  }
+
+  static Future<Db?> getDB() async {
+    try {
+      if (_db == null) {
+        _db = await Db.create(_getConnectionString());
+        await _db?.open();
+      }
+      if (_db != null && _db?.isConnected == true) {
+        return _db;
+      }
+      await _db?.close();
+      await _db?.open();
+      if (_db != null && _db?.isConnected == true) {
+        return _db;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+}
 
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Carbon Pi',
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 0;
-
-  final List<Widget> _pages = [
-    PageOne(),
-    PageTwo(),
-    PageThree(),
-    PageFour(),
-    PageFive(),
-  ];
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 187, 92, 10),
-      drawer: Drawer(
-        backgroundColor: Color.fromRGBO(226, 94, 62, 15),
-        child: Column(
-          children: [
-            DrawerHeader(
-                child: Icon(
-              Icons.favorite,
-              size: 80,
-            )),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("A B O U T"),
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(226, 94, 62, 15),
-        title: Text('Carbon Pi'),
-      ),
-      body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(226, 94, 62, 15),
-        selectedItemColor: Color.fromRGBO(255, 155, 80, 15),
-        unselectedItemColor: Color.fromRGBO(198, 61, 47, 15),
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Page 1',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Page 2',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Page 3',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Page 4',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Page 5',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PageOne extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Page 1 Content'),
-    );
-  }
-}
-
-class PageTwo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Page 2 Content'),
-    );
-  }
-}
-
-class PageThree extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Page 3 Content'),
-    );
-  }
-}
-
-class PageFour extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Page 4 Content'),
-    );
-  }
-}
-
-class PageFive extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Page 5 Content'),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OnboardingScreen(),
     );
   }
 }

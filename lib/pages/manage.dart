@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/pages/add_tr.dart';
 
 import '../main_interface/main_page.dart';
 import '../widgets/common_top_bar.dart';
@@ -75,7 +76,7 @@ class ManagePage extends StatelessWidget {
                 icon: Icons.currency_rupee,
                 text: 'New Payment',
                 backgroundColor: Color.fromARGB(255, 118, 173, 164),
-                page: MainPage(),
+                page: MyTransactionApp(),
               ),
               IconAndTextButton(
                 icon: Icons.history,
@@ -94,5 +95,5 @@ class ManagePage extends StatelessWidget {
         ),
       ],
     );
-  }  
+  }
 }

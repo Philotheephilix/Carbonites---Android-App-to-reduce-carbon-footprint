@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/pages/manage.dart';
 
 class MyTransactionApp extends StatelessWidget {
   const MyTransactionApp({super.key});
@@ -40,11 +41,9 @@ class _TransactionFormState extends State<TransactionForm> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // Perform actions with the collected data
+
       print('Category: $_category');
       print('Price: $_price');
-      print('Customer Name: $_customerName');
-      // Add further logic here to process/store the data
     }
   }
 
@@ -53,6 +52,15 @@ class _TransactionFormState extends State<TransactionForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Transaction Details'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ManagePage()),
+            );
+          },
+        ),
       ),
       body: Center(
         child: Padding(
@@ -99,19 +107,6 @@ class _TransactionFormState extends State<TransactionForm> {
                   },
                   onSaved: (value) {
                     _price = double.parse(value!);
-                  },
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'Customer Name'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter customer name';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _customerName = value!;
                   },
                 ),
                 SizedBox(height: 20),

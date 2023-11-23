@@ -40,6 +40,7 @@ class IconAndTextButton extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
+              fontFamily: 'Capriola',
               fontSize: 20,
             ),
           ),

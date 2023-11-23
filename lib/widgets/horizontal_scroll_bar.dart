@@ -7,8 +7,8 @@ class HorizontalScrollBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 415,
-      height: 180,
-      color: Colors.green,
+      height: 185,
+      color: Colors.transparent,
       padding: const EdgeInsets.all(10),
       child: Align(
         alignment: Alignment.centerLeft,
@@ -31,6 +31,7 @@ class HorizontalScrollBar extends StatelessWidget {
                       'Highlights',
                       style: TextStyle(
                         color: Color(0xff000000),
+                        fontFamily: 'Capriola',
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),

@@ -45,9 +45,6 @@ class HomePage extends StatelessWidget {
         ),
         const HorizontalScrollBar(),
         _sneakPeek(),
-        const MyGoalsWidget(
-          height: 400,
-        ),
       ],
     );
   }

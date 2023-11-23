@@ -28,6 +28,7 @@ class CommonTopBar extends StatelessWidget implements PreferredSizeWidget {
         'Carbon PI',
         style: TextStyle(
           color: Color(0xff000000),
+          fontFamily: 'Capriola',
           fontSize: 25,
           fontWeight: FontWeight.bold,
         ),

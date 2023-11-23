@@ -19,7 +19,16 @@ class ManagePage extends StatelessWidget {
       drawer: const MenuDrawer(
         drawerColor: Color(0xffADEF8D),
       ),
-      body: _managePageLayout(),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomRight,
+            colors: [Color(0xffBFF098), Color(0xff6FD6FF)],
+          ),
+        ),
+        child: _managePageLayout(),
+      ),
     );
   }
 
@@ -36,6 +45,7 @@ class ManagePage extends StatelessWidget {
                 child: Text(
                   'My Transactions',
                   style: TextStyle(
+                    fontFamily: 'Capriola',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

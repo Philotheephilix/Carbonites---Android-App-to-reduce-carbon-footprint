@@ -20,9 +20,6 @@ class CustomChartWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 20,
-          ),
           _chartWidget(),
         ],
       ),

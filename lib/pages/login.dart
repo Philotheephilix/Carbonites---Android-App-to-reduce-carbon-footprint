@@ -3,10 +3,16 @@ import 'package:pi_carbon_tracer/main.dart';
 
 import '../main_interface/main_page.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _login(BuildContext context) async {
@@ -14,46 +20,51 @@ class LoginPage extends StatelessWidget {
     String password = _passwordController.text;
 
     if (await loginin(username, password)) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const MainPage(),
-        ),
-      );
+      _navigateToMainPage();
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        _warningBubble(),
-      );
+      _warningBubble();
     }
   }
 
-  SnackBar _warningBubble() {
-    return SnackBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      content: SizedBox(
-        height: 200,
-        child: Center(
-          child: Container(
-            width: 200,
-            height: 50,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 199, 200, 227),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Center(
-                child: Text(
-              'Login failed',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+  Future<dynamic> _navigateToMainPage() {
+    return Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MainPage(),
+      ),
+    );
+  }
+
+  ScaffoldFeatureController _warningBubble() {
+    return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        content: SizedBox(
+          height: 200,
+          child: Center(
+            child: Container(
+              width: 200,
+              height: 50,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 199, 200, 227),
+                borderRadius: BorderRadius.circular(20),
               ),
-            )),
+              child: const Center(
+                  child: Text(
+                'Login failed',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Capriola',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
+            ),
           ),
         ),
+        duration: const Duration(seconds: 2), // Adjust the duration as needed
       ),
-      duration: const Duration(seconds: 2), // Adjust the duration as needed
     );
   }
 
@@ -111,6 +122,7 @@ class LoginPage extends StatelessWidget {
                     'Carbon PI',
                     style: TextStyle(
                       color: Color.fromARGB(207, 237, 228, 228),
+                      fontFamily: 'Capriola',
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
@@ -184,6 +196,7 @@ class LoginPage extends StatelessWidget {
                   child: const Text(
                     'Login',
                     style: TextStyle(
+                      fontFamily: 'Capriola',
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

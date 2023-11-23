@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/menu_drawer.dart';
 import '../widgets/common_top_bar.dart';
 import '../widgets/custom_chart_widget.dart';
+import '../models/percentage_circle.dart';
 
 class StatsPage extends StatelessWidget {
   const StatsPage({super.key});
@@ -16,32 +17,75 @@ class StatsPage extends StatelessWidget {
       drawer: const MenuDrawer(
         drawerColor: Color(0xffBCCFFF),
       ),
-      body: ListView(
-        children: [
-          const CustomChartWidget(
-            height: 190,
-            chartType: 'line',
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xffA1C4FD), Color(0xffC2E9FB)],
           ),
-          const SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _subWidgets(180, 200, 10),
-              _subWidgets(180, 200, 10),
-            ],
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          _subWidgets(300, 300, 20),
-        ],
+        ),
+        child: ListView(
+          children: [
+            const CustomChartWidget(
+              height: 190,
+              chartType: 'line',
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _subWidgets(
+                  180,
+                  180,
+                  10,
+                  const PercentageCircle(
+                    percentage: 95,
+                    color: Colors.green,
+                  ),
+                ),
+                _subWidgets(
+                  180,
+                  180,
+                  10,
+                  const PercentageCircle(
+                    percentage: 87,
+                    color: Colors.blue,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 20, top: 10),
+              child: Text(
+                'Report',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Capriola',
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            _subWidgets(
+              300,
+              300,
+              20,
+              Container(),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Container _subWidgets(double width, double height, double padding) {
+  Container _subWidgets(
+      double width, double height, double padding, Widget element) {
     return Container(
       width: width,
       height: height,
@@ -61,6 +105,8 @@ class StatsPage extends StatelessWidget {
               ),
             ],
           ),
+          padding: const EdgeInsets.all(20),
+          child: element,
         ),
       ),
     );

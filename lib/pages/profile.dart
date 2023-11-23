@@ -11,6 +11,8 @@ import '../widgets/common_top_bar.dart';
 import '../models/buttons.dart';
 
 class ProfilePage extends StatelessWidget {
+  final String username = 'Username';
+
   const ProfilePage({super.key});
 
   @override
@@ -85,7 +87,7 @@ class ProfilePage extends StatelessWidget {
               IconAndTextButton(
                 icon: Icons.logout,
                 text: 'Logout',
-                backgroundColor: Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: const Color.fromARGB(189, 150, 150, 150),
                 page: LoginPage(),
               )
             ],
@@ -115,7 +117,12 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const SelectableText('Username'),
+          SelectableText(
+            username,
+            style: const TextStyle(
+              fontFamily: 'Capriola',
+            ),
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -134,6 +141,7 @@ class ProfilePage extends StatelessWidget {
                 child: Text(
                   'Edit profile',
                   style: TextStyle(
+                    fontFamily: 'Capriola',
                     fontSize: 20,
                   ),
                 ),

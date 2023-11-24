@@ -290,7 +290,7 @@ Future<Map<String, double>> getMonthSum() async {
     Map<String, double> monthTotalAmounts = {};
 
     for (var transaction in transactions) {
-      final category = transaction['category'];
+      final category = transaction['month'];
       final amount = transaction['amount'].toDouble();
 
       if (monthTotalAmounts.containsKey(category)) {

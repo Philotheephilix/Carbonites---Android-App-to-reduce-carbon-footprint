@@ -1,10 +1,11 @@
 // ignore_for_file: avoid_print
-
+import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart'
     show BuildContext, Key, MaterialApp, StatelessWidget, Widget, runApp;
 import 'package:mongo_dart/mongo_dart.dart' show Db, where, DbCollection;
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/const.dart';
+import 'package:pi_carbon_tracer/permission.dart';
 //import 'package:pi_carbon_tracer/main_interface/main_page.dart';
 import 'main_interface/onboarding_screen.dart';
 
@@ -100,6 +101,7 @@ Future<bool> loginin(String user, String passs) async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var db = await DB.getDB();
+  requestStoragePermission();
 
   if (db != null) {
     var collection = db.collection('studentDet');

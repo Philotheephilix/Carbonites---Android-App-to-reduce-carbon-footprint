@@ -85,19 +85,19 @@ class ManagePage extends StatelessWidget {
               IconAndTextButton(
                 icon: Icons.currency_rupee,
                 text: 'New Payment',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
+                backgroundColor: Color.fromARGB(255, 172, 240, 228),
                 page: MyTransactionApp(),
               ),
               IconAndTextButton(
                 icon: Icons.history,
                 text: 'Payment history',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
+                backgroundColor: Color.fromARGB(255, 172, 240, 228),
                 page: PaymentHistoryPage(),
               ),
               IconAndTextButton(
                 icon: Icons.category,
                 text: 'Categories',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
+                backgroundColor: Color.fromARGB(255, 172, 240, 228),
                 page: MainPage(),
               ),
             ],

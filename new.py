@@ -2,7 +2,7 @@ import random
 from pymongo import MongoClient
 
 # Sample data
-categories = ['Lifestyle', 'Medicine', 'Grocery', 'Loan', 'Fashion']
+categories = ['Travel', 'Medicine', 'Service', 'Goods', 'Food','Home','Loan']
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 customer="philo"
 # Function to generate random transaction
@@ -15,12 +15,15 @@ def generate_random_transaction():
     date = round(random.uniform(1, 31))
     year = round(random.uniform(2023,2023))
     amount = round(random.uniform(10.0, 1000.0), 2)  # Generates a random amount between 10.0 and 200.0
+    year = round(random.uniform(1, 31))
+    amount = round(random.uniform(10.0, 200.0), 2)  # Generates a random amount between 10.0 and 200.0
     return {
         "category": category,
         "amount": amount,
         "month": month,
         'date': date,
-        'year' : year
+        'year' : year,
+        'year': year
     }
 
 # Connect to MongoDB

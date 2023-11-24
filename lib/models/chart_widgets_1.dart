@@ -1,7 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart' show Db, where, AggregateOptions;
 import 'package:pi_carbon_tracer/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:pi_carbon_tracer/pages/stats.dart';
+
+double per_amount = 0;
 
 class LineChartWidget extends StatefulWidget {
   const LineChartWidget({Key? key}) : super(key: key);
@@ -257,6 +261,55 @@ Future<List<MonthlyData>> generateData() async {
   return monthlyData;
 }
 
+Future<double> storeperc() async {
+  var db = await DB.getDB();
+  if (db != null) {
+    var collection = db.collection('philo');
+
+    final List<Map<String, dynamic>> transactions =
+        await collection.find().toList();
+
+    Map<String, double> categoryTotalAmounts = {};
+    per_amount = 0;
+    for (var transaction in transactions) {
+      final category = transaction['category'];
+      double amount = transaction['amount'].toDouble();
+      if (category == 'Travel') {
+        amount = amount * .26;
+        per_amount = per_amount + amount;
+      } else if (category == 'Home') {
+        amount = amount * .22;
+        per_amount = per_amount + amount;
+      } else if (category == 'Food') {
+        amount = amount * .16;
+        per_amount = per_amount + amount;
+      } else if (category == 'Goods') {
+        amount = amount * .15;
+        per_amount = per_amount + amount;
+      } else if (category == 'Services') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Loan') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Medicine') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else {
+        amount = amount * .10;
+        per_amount = per_amount + amount;
+      }
+      if (categoryTotalAmounts.containsKey(category)) {
+        categoryTotalAmounts[category] =
+            categoryTotalAmounts[category]! + amount;
+      } else {
+        categoryTotalAmounts[category] = amount;
+      }
+    }
+  }
+  return per_amount;
+}
+
 Future<Map<String, double>> getCategorySum() async {
   var db = await DB.getDB();
   if (db != null) {
@@ -266,11 +319,35 @@ Future<Map<String, double>> getCategorySum() async {
         await collection.find().toList();
 
     Map<String, double> categoryTotalAmounts = {};
-
+    per_amount = 0;
     for (var transaction in transactions) {
       final category = transaction['category'];
-      final amount = transaction['amount'].toDouble();
-
+      double amount = transaction['amount'].toDouble();
+      if (category == 'Travel') {
+        amount = amount * .26;
+        per_amount = per_amount + amount;
+      } else if (category == 'Home') {
+        amount = amount * .22;
+        per_amount = per_amount + amount;
+      } else if (category == 'Food') {
+        amount = amount * .16;
+        per_amount = per_amount + amount;
+      } else if (category == 'Goods') {
+        amount = amount * .15;
+        per_amount = per_amount + amount;
+      } else if (category == 'Services') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Loan') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Medicine') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else {
+        amount = amount * .10;
+        per_amount = per_amount + amount;
+      }
       if (categoryTotalAmounts.containsKey(category)) {
         categoryTotalAmounts[category] =
             categoryTotalAmounts[category]! + amount;
@@ -278,7 +355,6 @@ Future<Map<String, double>> getCategorySum() async {
         categoryTotalAmounts[category] = amount;
       }
     }
-
     return categoryTotalAmounts;
   }
   return {};

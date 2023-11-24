@@ -7,6 +7,7 @@ class PaymentHistoryPage extends StatefulWidget {
   const PaymentHistoryPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PaymentHistoryPageState createState() => _PaymentHistoryPageState();
 }
 
@@ -39,12 +40,12 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment History'),
+        title: const Text('Payment History'),
         backgroundColor: Colors.blue,
       ),
       body: Column(
         children: [
-          Container(
+          const SizedBox(
             height: 250,
             child: CustomChartWidget(
               height: 190,
@@ -59,9 +60,9 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
                 List<String> transactionDetails = transaction.split(',');
                 return ListTile(
                   title: Text('Date: ${transactionDetails[2]}',
-                      style: TextStyle(fontSize: 20)),
+                      style: const TextStyle(fontSize: 20)),
                   subtitle: Text('Category: ${transactionDetails[0]}',
-                      style: TextStyle(fontSize: 16)),
+                      style: const TextStyle(fontSize: 16)),
                   trailing: Text(
                     '₹ ${transactionDetails[1]}',
                     style: TextStyle(fontSize: 20, color: Colors.orange[900]),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/widgets/custom_chart_widget.dart';
 import 'package:pi_carbon_tracer/widgets/menu_drawer.dart';
-import 'package:pi_carbon_tracer/widgets/my_goals_widget.dart';
+//import 'package:pi_carbon_tracer/widgets/my_goals_widget.dart';
 
 import '../widgets/common_top_bar.dart';
 import '../widgets/horizontal_scroll_bar.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart'
-    show BuildContext, Key, MaterialApp, StatelessWidget, Widget, runApp;
+    show BuildContext, MaterialApp, StatelessWidget, Widget, runApp;
 import 'package:mongo_dart/mongo_dart.dart' show Db, where;
 import 'package:flutter/material.dart';
 //import 'package:pi_carbon_tracer/main_interface/main_page.dart';
@@ -58,7 +58,7 @@ void main() async {
 }
 
 class DB {
-  static Db? _db = null;
+  static Db? _db;
 
   static String _getConnectionString() {
     return "mongodb+srv://maintainer_philix:qwertyuiop@carbonpi.hiozz58.mongodb.net/Project-X?retryWrites=true&w=majority";
@@ -86,7 +86,9 @@ class DB {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

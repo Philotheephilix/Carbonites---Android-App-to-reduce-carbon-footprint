@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/menu_drawer.dart';
 import '../widgets/common_top_bar.dart';
-import '../widgets/custom_chart_widget.dart';
+import '../widgets/custom_chart_widget_1.dart';
 import '../models/percentage_circle.dart';
 
 class StatsPage extends StatelessWidget {
@@ -76,7 +76,9 @@ class StatsPage extends StatelessWidget {
               300,
               300,
               20,
-              Container(),
+              Container(
+                child: Text('hello'),
+              ),
             ),
           ],
         ),

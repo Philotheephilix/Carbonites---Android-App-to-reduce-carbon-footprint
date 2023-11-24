@@ -105,7 +105,7 @@ class HomePage extends StatelessWidget {
             height: 20,
           ),
           const Text(
-            "---One-liner---",
+            "Earth's VIPs : Very Important Planet Savers",
             style: TextStyle(
               fontFamily: 'Capriola',
               fontSize: 16,

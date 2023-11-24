@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mongo_dart/mongo_dart.dart' show Db, where, AggregateOptions;
 import 'package:pi_carbon_tracer/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -241,45 +242,41 @@ class _DoughnutChartWidgetState extends State<DoughnutChartWidget> {
 }
 
 Future<List<MonthlyData>> generateData() async {
+  Map<String, double> categorySum = await getCategorySum();
   List<MonthlyData> monthlyData = [];
-  for (int i = 1; i <= 12; i++) {
-    int totalPriceForMonth = await calculateTotalPriceForMonth(i);
-    int totalPriceAsInt = totalPriceForMonth.toInt();
-    monthlyData.add(MonthlyData(getMonthName(i), totalPriceAsInt));
-  }
+
+  categorySum.forEach((category, totalAmount) {
+    monthlyData.add(MonthlyData(category, totalAmount.toInt()));
+  });
+
   return monthlyData;
 }
 
-String getMonthName(int month) {
-  switch (month) {
-    case 1:
-      return 'Jan';
-    case 2:
-      return 'Feb';
-    case 3:
-      return 'Mar';
-    case 4:
-      return 'Apr';
-    case 5:
-      return 'May';
-    case 6:
-      return 'June';
-    case 7:
-      return 'July';
-    case 8:
-      return 'Aug';
-    case 9:
-      return 'Sep';
-    case 10:
-      return 'Oct';
-    case 11:
-      return 'Nov';
-    case 12:
-      return 'Dec';
+Future<Map<String, double>> getCategorySum() async {
+  var db = await DB.getDB();
+  if (db != null) {
+    var collection = db.collection('philo');
 
-    default:
-      return '';
+    final List<Map<String, dynamic>> transactions =
+        await collection.find().toList();
+
+    Map<String, double> categoryTotalAmounts = {};
+
+    for (var transaction in transactions) {
+      final category = transaction['category'];
+      final amount = transaction['amount'].toDouble();
+
+      if (categoryTotalAmounts.containsKey(category)) {
+        categoryTotalAmounts[category] =
+            categoryTotalAmounts[category]! + amount;
+      } else {
+        categoryTotalAmounts[category] = amount;
+      }
+    }
+
+    return categoryTotalAmounts;
   }
+  return {};
 }
 
 class MonthlyData {

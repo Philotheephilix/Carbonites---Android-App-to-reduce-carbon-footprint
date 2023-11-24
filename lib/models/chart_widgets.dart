@@ -6,6 +6,7 @@ class LineChartWidget extends StatefulWidget {
   const LineChartWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LineChartWidgetState createState() => _LineChartWidgetState();
 }
 
@@ -46,7 +47,7 @@ class _LineChartWidgetState extends State<LineChartWidget> {
                 ),
               ],
             )
-          : Center(child: CircularProgressIndicator()),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }
@@ -55,6 +56,7 @@ class ColumnChartWidget extends StatefulWidget {
   const ColumnChartWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ColumnChartWidgetState createState() => _ColumnChartWidgetState();
 }
 
@@ -88,7 +90,7 @@ class _ColumnChartWidgetState extends State<ColumnChartWidget> {
                 ),
               ],
             )
-          : CircularProgressIndicator(),
+          : const CircularProgressIndicator(),
     );
   }
 }
@@ -97,6 +99,7 @@ class BarChartWidget extends StatefulWidget {
   const BarChartWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _BarChartWidgetState createState() => _BarChartWidgetState();
 }
 
@@ -119,7 +122,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bar Chart'),
+        title: const Text('Bar Chart'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -139,7 +142,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                   ),
                 ],
               )
-            : Center(child: CircularProgressIndicator()),
+            : const Center(child: CircularProgressIndicator()),
       ),
     );
   }
@@ -149,6 +152,7 @@ class PieChartWidget extends StatefulWidget {
   const PieChartWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PieChartWidgetState createState() => _PieChartWidgetState();
 }
 
@@ -173,7 +177,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pie Chart'),
+        title: const Text('Pie Chart'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -187,7 +191,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                   ),
                 ],
               )
-            : Center(child: CircularProgressIndicator()),
+            : const Center(child: CircularProgressIndicator()),
       ),
     );
   }
@@ -197,6 +201,7 @@ class DoughnutChartWidget extends StatefulWidget {
   const DoughnutChartWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _DoughnutChartWidgetState createState() => _DoughnutChartWidgetState();
 }
 
@@ -221,7 +226,7 @@ class _DoughnutChartWidgetState extends State<DoughnutChartWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Doughnut Chart'),
+          title: const Text('Doughnut Chart'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -235,7 +240,7 @@ class _DoughnutChartWidgetState extends State<DoughnutChartWidget> {
                     ),
                   ],
                 )
-              : Center(child: CircularProgressIndicator()),
+              : const Center(child: CircularProgressIndicator()),
         ));
   }
 }

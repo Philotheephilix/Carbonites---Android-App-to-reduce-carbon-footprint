@@ -279,6 +279,32 @@ Future<Map<String, double>> getCategorySum() async {
   return {};
 }
 
+Future<Map<String, double>> getMonthSum() async {
+  var db = await DB.getDB();
+  if (db != null) {
+    var collection = db.collection('philo');
+
+    final List<Map<String, dynamic>> transactions =
+        await collection.find().toList();
+
+    Map<String, double> monthTotalAmounts = {};
+
+    for (var transaction in transactions) {
+      final category = transaction['category'];
+      final amount = transaction['amount'].toDouble();
+
+      if (monthTotalAmounts.containsKey(category)) {
+        monthTotalAmounts[category] = monthTotalAmounts[category]! + amount;
+      } else {
+        monthTotalAmounts[category] = amount;
+      }
+    }
+
+    return monthTotalAmounts;
+  }
+  return {};
+}
+
 class MonthlyData {
   final String month;
   final int sales;

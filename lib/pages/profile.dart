@@ -50,35 +50,35 @@ class ProfilePage extends StatelessWidget {
             left: 60,
             right: 60,
           ),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const IconAndTextButton(
+              IconAndTextButton(
                 icon: Icons.person,
                 text: 'About us',
                 backgroundColor: Color.fromARGB(189, 150, 150, 150),
                 page: AboutUsPage(),
               ),
-              const IconAndTextButton(
+              IconAndTextButton(
                 icon: Icons.account_box,
                 text: 'Account Details',
                 backgroundColor: Color.fromARGB(189, 150, 150, 150),
                 page: AccountDetailsPage(),
               ),
-              const IconAndTextButton(
+              IconAndTextButton(
                 icon: Icons.privacy_tip,
                 text: 'Privacy policy',
                 backgroundColor: Color.fromARGB(189, 150, 150, 150),
                 page: PrivacyPolicyPage(),
               ),
-              const IconAndTextButton(
+              IconAndTextButton(
                 icon: Icons.info,
                 text: 'Help & Support',
                 backgroundColor: Color.fromARGB(189, 150, 150, 150),
                 page: HelpAndSupportPage(),
               ),
-              const IconAndTextButton(
+              IconAndTextButton(
                 icon: Icons.settings,
                 text: 'Settings',
                 backgroundColor: Color.fromARGB(189, 150, 150, 150),
@@ -87,7 +87,7 @@ class ProfilePage extends StatelessWidget {
               IconAndTextButton(
                 icon: Icons.logout,
                 text: 'Logout',
-                backgroundColor: const Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: Color.fromARGB(189, 150, 150, 150),
                 page: LoginPage(),
               )
             ],

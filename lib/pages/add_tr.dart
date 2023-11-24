@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:pi_carbon_tracer/pages/manage.dart';
 
 class MyTransactionApp extends StatelessWidget {
   const MyTransactionApp({super.key});
@@ -12,7 +13,7 @@ class MyTransactionApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TransactionForm(),
+      home: const TransactionForm(),
     );
   }
 }
@@ -21,6 +22,7 @@ class TransactionForm extends StatefulWidget {
   const TransactionForm({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TransactionFormState createState() => _TransactionFormState();
 }
 
@@ -28,6 +30,7 @@ class _TransactionFormState extends State<TransactionForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _category = '';
   double _price = 0.0;
+  String _customerName = '';
 
   List<String> categories = [
     'Groceries',
@@ -40,9 +43,11 @@ class _TransactionFormState extends State<TransactionForm> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-
+      // Perform actions with the collected data
       print('Category: $_category');
       print('Price: $_price');
+      print('Customer Name: $_customerName');
+      // Add further logic here to process/store the data
     }
   }
 
@@ -50,20 +55,11 @@ class _TransactionFormState extends State<TransactionForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transaction Details'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ManagePage()),
-            );
-          },
-        ),
+        title: const Text('Transaction Details'),
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -78,7 +74,7 @@ class _TransactionFormState extends State<TransactionForm> {
                       child: Text(value),
                     );
                   }).toList(),
-                  hint: Text('Select Category'),
+                  hint: const Text('Select Category'),
                   onChanged: (value) {
                     setState(() {
                       _category = value!;
@@ -91,10 +87,15 @@ class _TransactionFormState extends State<TransactionForm> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Price'),
-                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: const InputDecoration(
+                    labelText: 'Price',
+                  ),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a price';
@@ -108,10 +109,31 @@ class _TransactionFormState extends State<TransactionForm> {
                     _price = double.parse(value!);
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Customer Name',
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter customer name';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _customerName = value!;
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 ElevatedButton(
                   onPressed: _submitForm,
-                  child: Text('Submit'),
+                  child: const Text(
+                    'Submit',
+                  ),
                 ),
               ],
             ),

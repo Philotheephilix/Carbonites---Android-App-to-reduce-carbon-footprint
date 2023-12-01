@@ -2,31 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-class MyTransactionApp extends StatelessWidget {
-  const MyTransactionApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Transaction Details',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const TransactionForm(),
-    );
-  }
-}
-
-class TransactionForm extends StatefulWidget {
-  const TransactionForm({super.key});
+class MyTransactionPage extends StatefulWidget {
+  const MyTransactionPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _TransactionFormState createState() => _TransactionFormState();
+  _MyTransactionPageState createState() => _MyTransactionPageState();
 }
 
-class _TransactionFormState extends State<TransactionForm> {
+class _MyTransactionPageState extends State<MyTransactionPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _category = '';
   double _price = 0.0;
@@ -55,7 +39,14 @@ class _TransactionFormState extends State<TransactionForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Transaction Details'),
+        backgroundColor: const Color(0xffADEF8D),
+        foregroundColor: Colors.black,
+        title: const Text(
+          'Transaction Details',
+          style: TextStyle(
+            fontFamily: 'Capriola',
+          ),
+        ),
       ),
       body: Center(
         child: Padding(

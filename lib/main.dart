@@ -1,14 +1,12 @@
 // ignore_for_file: avoid_print
 
-import 'package:flutter/material.dart'
-    show BuildContext, Key, MaterialApp, StatelessWidget, Widget, runApp;
-import 'package:mongo_dart/mongo_dart.dart' show Db, where, DbCollection;
 import 'package:flutter/material.dart';
-import 'package:pi_carbon_tracer/const.dart';
+import 'package:mongo_dart/mongo_dart.dart' show Db, where;
+//import 'package:pi_carbon_tracer/const.dart';
 //import 'package:pi_carbon_tracer/main_interface/main_page.dart';
 import 'main_interface/onboarding_screen.dart';
 
-//import 'pages/login.dart';
+//import 'pages/login.dart`';
 //import 'pages/stats.dart';
 //import 'pages/manage.dart';
 //import 'pages/profile.dart';
@@ -18,7 +16,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-void add_tr(Map<String, dynamic> documentData) async {
+void addTransaction(Map<String, dynamic> documentData) async {
   var db = await DB.getDB();
 
   if (db != null) {
@@ -26,7 +24,6 @@ void add_tr(Map<String, dynamic> documentData) async {
     await collection.insert(documentData);
     print("added");
   }
-  ;
 }
 
 Future<int> calculateTotalPriceForMonth(int targetMonth) async {
@@ -35,7 +32,7 @@ Future<int> calculateTotalPriceForMonth(int targetMonth) async {
     var collection = db.collection('philo');
     var query = where.eq('month', targetMonth);
 
-    var cursor = await collection.find(query);
+    var cursor = collection.find(query);
     var totalPrice = 0;
 
     await cursor.forEach((document) {
@@ -76,7 +73,7 @@ Future<void> createAppDataDirectory() async {
   }
 }
 
-String Client_name = "";
+String clientName = "";
 Future<bool> loginin(String user, String passs) async {
   var db = await DB.getDB();
 
@@ -121,7 +118,7 @@ void main() async {
 }
 
 class DB {
-  static Db? _db = null;
+  static Db? _db;
 
   static String _getConnectionString() {
     return "mongodb+srv://maintainer_philix:qwertyuiop@carbonpi.hiozz58.mongodb.net/Project-X?retryWrites=true&w=majority";
@@ -149,7 +146,7 @@ class DB {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +159,5 @@ class MyApp extends StatelessWidget {
 
 @override
 Widget build(BuildContext context) {
-  // TODO: implement build
   throw UnimplementedError();
 }

@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
           ),
           Text(
             'Welcome $username!',
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black,
               fontFamily: 'Capriola',
               fontSize: 20,

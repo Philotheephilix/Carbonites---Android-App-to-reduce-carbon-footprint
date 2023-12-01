@@ -100,7 +100,7 @@ class ProfilePage extends StatelessWidget {
   // this method contains the design for the profile pic and edit button
   Container _photoAndEditButton() {
     return Container(
-      height: 300 - 15,
+      height: 300,
       color: Colors.transparent,
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -141,6 +141,7 @@ class ProfilePage extends StatelessWidget {
                 child: Text(
                   'Edit profile',
                   style: TextStyle(
+                    color: Colors.white,
                     fontFamily: 'Capriola',
                     fontSize: 20,
                   ),

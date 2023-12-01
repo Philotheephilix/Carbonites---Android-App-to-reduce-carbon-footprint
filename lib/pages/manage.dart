@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pi_carbon_tracer/pages/add_tr.dart';
+import 'package:pi_carbon_tracer/pages/home.dart';
+import 'package:pi_carbon_tracer/subpages/manage/new_payments.dart';
 
-import '../main_interface/main_page.dart';
 import '../widgets/common_top_bar.dart';
 import '../widgets/menu_drawer.dart';
 import '../models/buttons.dart';
@@ -61,49 +61,49 @@ class ManagePage extends StatelessWidget {
           height: 200 - 20,
           color: Colors.transparent,
           child: Center(
-            child: Container(
-              width: 200,
-              height: 150,
-              color: Colors.blue,
-            ),
+            child: Image.asset('assets/images/transfer.png'),
           ),
         ),
         const SizedBox(
           height: 5,
         ),
-        Container(
-          height: 200,
-          color: Colors.transparent,
-          padding: const EdgeInsets.only(
-            left: 40,
-            right: 60,
-          ),
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconAndTextButton(
-                icon: Icons.currency_rupee,
-                text: 'New Payment',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
-                page: MyTransactionApp(),
-              ),
-              IconAndTextButton(
-                icon: Icons.history,
-                text: 'Payment history',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
-                page: PaymentHistoryPage(),
-              ),
-              IconAndTextButton(
-                icon: Icons.category,
-                text: 'Categories',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
-                page: MainPage(),
-              ),
-            ],
-          ),
-        ),
+        _pageButtons(),
       ],
+    );
+  }
+
+  Container _pageButtons() {
+    return Container(
+      height: 200,
+      color: Colors.transparent,
+      padding: const EdgeInsets.only(
+        left: 40,
+        right: 60,
+      ),
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          IconAndTextButton(
+            icon: Icons.currency_rupee,
+            text: 'New Payment',
+            backgroundColor: Color.fromARGB(255, 89, 179, 164),
+            page: MyTransactionPage(),
+          ),
+          IconAndTextButton(
+            icon: Icons.history,
+            text: 'Payment history',
+            backgroundColor: Color.fromARGB(255, 89, 179, 164),
+            page: PaymentHistoryPage(),
+          ),
+          IconAndTextButton(
+            icon: Icons.category,
+            text: 'Categories',
+            backgroundColor: Color.fromARGB(255, 89, 179, 164),
+            page: HomePage(),
+          ),
+        ],
+      ),
     );
   }
 }

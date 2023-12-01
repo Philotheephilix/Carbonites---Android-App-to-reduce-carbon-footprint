@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:developer';
 
 import '../models/chart_widgets_1.dart';
 
@@ -50,15 +49,6 @@ class CustomChartWidget extends StatelessWidget {
               top: 20,
             ),
             child: _chartDetermination(chartType),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0),
-            child: IconButton(
-              onPressed: () {
-                log('pressed');
-              },
-              icon: const Icon(Icons.more_vert_outlined),
-            ),
           ),
         ],
       ),

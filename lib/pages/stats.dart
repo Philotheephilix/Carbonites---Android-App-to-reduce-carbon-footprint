@@ -76,9 +76,7 @@ class StatsPage extends StatelessWidget {
               300,
               300,
               20,
-              Container(
-                child: Text('hello'),
-              ),
+              const Text('hello'),
             ),
           ],
         ),

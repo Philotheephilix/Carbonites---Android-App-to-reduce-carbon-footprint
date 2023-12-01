@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/main.dart';
-
-import '../main_interface/main_page.dart';
+import 'package:pi_carbon_tracer/main_interface/main_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -183,6 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
+                    foregroundColor: Colors.white,
                     shadowColor: Colors.transparent,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,

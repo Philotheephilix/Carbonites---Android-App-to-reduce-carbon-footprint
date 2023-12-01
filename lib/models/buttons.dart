@@ -29,6 +29,7 @@ class IconAndTextButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         backgroundColor: backgroundColor,
+        foregroundColor: Colors.white,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

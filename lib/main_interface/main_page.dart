@@ -7,7 +7,9 @@ import '../pages/manage.dart';
 import '../pages/profile.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  const MainPage({
+    super.key,
+  });
 
   @override
   // ignore: library_private_types_in_public_api

@@ -1,5 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'package:flutter/material.dart'
+    show BuildContext, Key, MaterialApp, StatelessWidget, Widget, runApp;
+import 'package:mongo_dart/mongo_dart.dart' show Db, where, DbCollection;
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart' show Db, where;
 //import 'package:pi_carbon_tracer/const.dart';
@@ -13,8 +16,6 @@ import 'main_interface/onboarding_screen.dart';
 //import 'subpages/payment_history.dart';
 // ignore: non_constant_identifier_names
 import 'dart:io';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 void addTransaction(Map<String, dynamic> documentData) async {
   var db = await DB.getDB();
@@ -73,17 +74,15 @@ Future<void> createAppDataDirectory() async {
   }
 }
 
-String clientName = "";
+String Client_name = "";
 Future<bool> loginin(String user, String passs) async {
   var db = await DB.getDB();
 
   if (db != null) {
-    requestStoragePermission();
     var collection = db.collection('customerdata');
     var val = await collection.findOne(where.eq("email", user));
 
     print('Found: $val');
-    createAppDataDirectory();
 
     if (val != null) {
       return true;

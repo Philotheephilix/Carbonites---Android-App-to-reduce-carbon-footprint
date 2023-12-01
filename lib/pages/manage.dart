@@ -67,43 +67,39 @@ class ManagePage extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        _pageButtons(),
+        Container(
+          height: 200,
+          color: Colors.transparent,
+          padding: const EdgeInsets.only(
+            left: 40,
+            right: 60,
+          ),
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              IconAndTextButton(
+                icon: Icons.currency_rupee,
+                text: 'New Payment',
+                backgroundColor: Color.fromARGB(255, 118, 173, 164),
+                page: MyTransactionApp(),
+              ),
+              IconAndTextButton(
+                icon: Icons.history,
+                text: 'Payment history',
+                backgroundColor: Color.fromARGB(255, 118, 173, 164),
+                page: PaymentHistoryPage(),
+              ),
+              IconAndTextButton(
+                icon: Icons.category,
+                text: 'Categories',
+                backgroundColor: Color.fromARGB(255, 118, 173, 164),
+                page: MainPage(),
+              ),
+            ],
+          ),
+        ),
       ],
-    );
-  }
-
-  Container _pageButtons() {
-    return Container(
-      height: 200,
-      color: Colors.transparent,
-      padding: const EdgeInsets.only(
-        left: 40,
-        right: 60,
-      ),
-      child: const Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          IconAndTextButton(
-            icon: Icons.currency_rupee,
-            text: 'New Payment',
-            backgroundColor: Color.fromARGB(255, 89, 179, 164),
-            page: MyTransactionPage(),
-          ),
-          IconAndTextButton(
-            icon: Icons.history,
-            text: 'Payment history',
-            backgroundColor: Color.fromARGB(255, 89, 179, 164),
-            page: PaymentHistoryPage(),
-          ),
-          IconAndTextButton(
-            icon: Icons.category,
-            text: 'Categories',
-            backgroundColor: Color.fromARGB(255, 89, 179, 164),
-            page: HomePage(),
-          ),
-        ],
-      ),
     );
   }
 }

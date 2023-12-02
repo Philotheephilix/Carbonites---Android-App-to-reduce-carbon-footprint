@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/main.dart';
 import 'package:pi_carbon_tracer/main_interface/main_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _usernameController = TextEditingController();
 
   final TextEditingController _passwordController = TextEditingController();
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: const Center(
                   child: Text(
-                'Login failed',
+                'Sign up failed',
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Capriola',
@@ -69,26 +69,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: 10000,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Colors.blue, Colors.green]),
-        ),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 50, right: 50, top: 80),
-            child: _glassWidget(context),
-          ),
-        ),
-      ),
-    );
+    return _signUpWidget(context);
   }
 
-  Column _glassWidget(BuildContext context) {
+  Column _signUpWidget(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -96,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
           width: 300,
           height: 550,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(193, 205, 201, 201),
+            color: const Color(0xC4C4C1D8).withOpacity(0.6),
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
@@ -129,26 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(
-                height: 5,
-              ),
-              Container(
-                width: 150,
-                height: 150,
-                color: Colors.transparent,
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [Colors.blue, Colors.green],
-                    ),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
+                height: 60,
               ),
               TextField(
                 controller: _usernameController,
@@ -162,59 +127,76 @@ class _LoginPageState extends State<LoginPage> {
               ),
               PasswordField(
                 passwordController: _passwordController,
+                label: 'Password',
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              PasswordField(
+                passwordController: _passwordController,
+                label: 'Confirm password',
               ),
               const SizedBox(
                 height: 40.0,
               ),
-              Container(
-                height: 45,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  gradient: const LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [Colors.blue, Colors.green],
-                  ),
-                ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    _login(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    foregroundColor: Colors.white,
-                    shadowColor: Colors.transparent,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                  ),
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                      fontFamily: 'Capriola',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              )
+              _signUpButton(context),
             ],
           ),
         ),
       ],
     );
   }
+
+  Container _signUpButton(BuildContext context) {
+    return Container(
+      height: 45,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        gradient: const LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [Color(0xDA769DEF), Color(0x769DEFDA)],
+        ),
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          _login(context);
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+        child: const Text(
+          'Sign up',
+          style: TextStyle(
+            fontFamily: 'Capriola',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class PasswordField extends StatefulWidget {
   final TextEditingController passwordController;
+  final String label;
 
-  const PasswordField({required this.passwordController, super.key});
+  const PasswordField({
+    super.key,
+    required this.passwordController,
+    required this.label,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -230,7 +212,7 @@ class _PasswordFieldState extends State<PasswordField> {
       controller: widget.passwordController,
       obscureText: obscureText,
       decoration: InputDecoration(
-        labelText: 'Password',
+        labelText: widget.label,
         suffixIcon: IconButton(
           icon: Icon(obscureText ? Icons.visibility_off : Icons.visibility),
           onPressed: () {

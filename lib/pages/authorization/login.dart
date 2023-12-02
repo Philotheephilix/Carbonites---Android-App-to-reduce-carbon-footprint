@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: Colors.black.withOpacity(.15),
                 spreadRadius: 10,
                 blurRadius: 25,
                 offset: const Offset(0, 5),
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text(
                     'Carbon PI',
                     style: TextStyle(
-                      color: Color.fromARGB(207, 237, 228, 228),
+                      color: Color.fromARGB(207, 38, 138, 54),
                       fontFamily: 'Capriola',
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
@@ -151,7 +151,6 @@ class _LoginPageState extends State<LoginPage> {
                 height: 40.0,
               ),
               _loginButton(context),
-
             ],
           ),
         ),
@@ -161,42 +160,42 @@ class _LoginPageState extends State<LoginPage> {
 
   Container _loginButton(BuildContext context) {
     return Container(
-              height: 45,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                gradient: const LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Color(0xDA769DEF), Color(0x769DEFDA)],
-                ),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  _login(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                  foregroundColor: Colors.white,
-                  shadowColor: Colors.transparent,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                ),
-                child: const Text(
-                  'Login',
-                  style: TextStyle(
-                    fontFamily: 'Capriola',
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            );
+      height: 45,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        gradient: const LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [Color(0xDA769DEF), Color(0x769DEFDA)],
+        ),
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          _login(context);
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+        child: const Text(
+          'Login',
+          style: TextStyle(
+            fontFamily: 'Capriola',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
   }
 }
 

@@ -107,7 +107,8 @@ class ToggleButton extends StatelessWidget {
         label,
         style: const TextStyle(
           fontFamily: 'Capriola',
-          color: Color(0xFF0B6784),
+          color: Color.fromARGB(214, 0, 63, 139),
+          fontSize: 16,
         ),
       ),
     );

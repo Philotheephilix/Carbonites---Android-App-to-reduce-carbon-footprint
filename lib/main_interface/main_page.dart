@@ -73,7 +73,7 @@ class _MainPageStates extends State<MainPage> {
             height: 40,
           ),
           label: '',
-          backgroundColor: const Color(0xffEFEFEF),
+          backgroundColor: Color(0xff9DEC98),
         ),
       ],
     );

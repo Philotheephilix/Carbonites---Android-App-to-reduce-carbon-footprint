@@ -19,7 +19,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonTopBar(
-        backgroundcolor: Color(0xffEFEFEF),
+        backgroundcolor: Color(0xff509BF7),
       ),
       drawer: const MenuDrawer(
         drawerColor: Color(0xffEFEFEF),
@@ -29,7 +29,7 @@ class ProfilePage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.white, Colors.grey],
+            colors: [Color(0xff509BF7), Color(0xff9DEC98)],
           ),
         ),
         child: _profileBase(),
@@ -57,37 +57,37 @@ class ProfilePage extends StatelessWidget {
               IconAndTextButton(
                 icon: Icons.person,
                 text: 'About us',
-                backgroundColor: Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: Color.fromARGB(132, 0, 0, 0),
                 page: AboutUsPage(),
               ),
               IconAndTextButton(
                 icon: Icons.account_box,
                 text: 'Account Details',
-                backgroundColor: Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: Color.fromARGB(132, 0, 0, 0),
                 page: AccountDetailsPage(),
               ),
               IconAndTextButton(
                 icon: Icons.privacy_tip,
                 text: 'Privacy policy',
-                backgroundColor: Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: Color.fromARGB(132, 0, 0, 0),
                 page: PrivacyPolicyPage(),
               ),
               IconAndTextButton(
                 icon: Icons.info,
                 text: 'Help & Support',
-                backgroundColor: Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: Color.fromARGB(132, 0, 0, 0),
                 page: HelpAndSupportPage(),
               ),
               IconAndTextButton(
                 icon: Icons.settings,
                 text: 'Settings',
-                backgroundColor: Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: Color.fromARGB(132, 0, 0, 0),
                 page: SettingsPage(),
               ),
               IconAndTextButton(
                 icon: Icons.logout,
                 text: 'Logout',
-                backgroundColor: Color.fromARGB(189, 150, 150, 150),
+                backgroundColor: Color.fromARGB(132, 0, 0, 0),
                 page: LoginPage(),
               )
             ],
@@ -141,7 +141,7 @@ class ProfilePage extends StatelessWidget {
                 child: Text(
                   'Edit profile',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color.fromARGB(132, 0, 0, 0),
                     fontFamily: 'Capriola',
                     fontSize: 20,
                   ),

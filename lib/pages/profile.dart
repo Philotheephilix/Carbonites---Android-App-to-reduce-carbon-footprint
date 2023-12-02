@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pi_carbon_tracer/pages/login.dart';
+import 'package:pi_carbon_tracer/pages/authorization/login.dart';
 
 import '../subpages/profile/about_us.dart';
 import '../subpages/profile/account_details.dart';

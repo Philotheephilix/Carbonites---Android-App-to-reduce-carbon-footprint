@@ -74,8 +74,9 @@ class _StatsPageState extends State<StatsPage> {
     return invertedPercentage;
   }
 
-  @override
   _StatsPageState createState() => _StatsPageState();
+  
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonTopBar(

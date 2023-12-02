@@ -1,10 +1,11 @@
 // ignore_for_file: avoid_print
 
-import 'package:flutter/material.dart'
-    show BuildContext, Key, MaterialApp, StatelessWidget, Widget, runApp;
-import 'package:mongo_dart/mongo_dart.dart' show Db, where, DbCollection;
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart' show Db, where;
+import 'package:flutter/material.dart';
+import 'package:mongo_dart/mongo_dart.dart' show Db, where;
+import 'package:path_provider/path_provider.dart';
+import 'package:pi_carbon_tracer/pages/authorization/auth_page.dart';
 //import 'package:pi_carbon_tracer/const.dart';
 //import 'package:pi_carbon_tracer/main_interface/main_page.dart';
 import 'main_interface/onboarding_screen.dart';
@@ -48,14 +49,6 @@ Future<int> calculateTotalPriceForMonth(int targetMonth) async {
     return totalPrice;
   }
   return 0;
-}
-
-Future<void> requestStoragePermission() async {
-  if (await Permission.storage.request().isGranted) {
-    print('Storage permission is granted');
-  } else {
-    print('Storage permission is not granted');
-  }
 }
 
 Future<void> createAppDataDirectory() async {

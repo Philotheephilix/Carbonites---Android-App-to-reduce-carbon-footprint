@@ -12,7 +12,7 @@ class PaymentHistoryPage extends StatefulWidget {
 
 class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
   List<String> transactions = [];
-
+  String selectedCategory = 'All';
   @override
   void initState() {
     super.initState();
@@ -79,7 +79,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
           ),
           child: _ledgerNavbar(),
         ),
-        LegerView(transactions: transactions),
+        LegerView(transactions: _filterTransactions(selectedCategory)),
       ],
     );
   }
@@ -92,13 +92,15 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
         children: [
           _divertButton('All'),
           const SizedBox(width: 10),
-          _divertButton('Groceries'),
+          _divertButton('Food'),
           const SizedBox(width: 10),
-          _divertButton('Clothing'),
+          _divertButton('Travel'),
           const SizedBox(width: 10),
-          _divertButton('Furniture'),
+          _divertButton('Goods'),
           const SizedBox(width: 10),
-          _divertButton('Other'),
+          _divertButton('Service'),
+          const SizedBox(width: 10),
+          _divertButton('Loan'),
           const SizedBox(width: 10),
         ],
       ),
@@ -107,7 +109,11 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
 
   ElevatedButton _divertButton(String text) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        setState(() {
+          selectedCategory = text; // Update selected category on button press
+        });
+      },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
           const Color.fromARGB(197, 255, 245, 245).withOpacity(0.5),
@@ -123,6 +129,17 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
         ),
       ),
     );
+  }
+
+  List<String> _filterTransactions(String category) {
+    if (category == 'All') {
+      return transactions; // Return all transactions if 'All' is selected
+    } else {
+      return transactions
+          .where((transaction) => transaction.startsWith(category))
+          .toList();
+      // Filter transactions based on category selected
+    }
   }
 }
 

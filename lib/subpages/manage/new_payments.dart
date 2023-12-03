@@ -115,20 +115,6 @@ class _MyTransactionPageState extends State<MyTransactionPage> {
           const SizedBox(
             height: 20,
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Customer Name',
-            ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter customer name';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              _customerName = value!;
-            },
-          ),
           const SizedBox(
             height: 20,
           ),

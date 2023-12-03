@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pi_carbon_tracer/widgets/custom_chart_widget.dart';
-import 'package:pi_carbon_tracer/widgets/menu_drawer.dart';
-//import 'package:pi_carbon_tracer/widgets/my_goals_widget.dart';
 
+import '../widgets/custom_chart_widget.dart';
+import '../models/menu_drawer.dart';
 import '../widgets/common_top_bar.dart';
-import '../widgets/horizontal_scroll_bar.dart';
+import '../models/utility_buttons.dart';
 
 class HomePage extends StatelessWidget {
   final String username = 'Username';
@@ -18,7 +17,7 @@ class HomePage extends StatelessWidget {
         backgroundcolor: Color(0xff9AECAB),
       ),
       drawer: const MenuDrawer(
-        drawerColor: Color(0xff9AECAB),
+        drawerGradient: [Color(0xFF8CF385), Color(0xFF76ABF3)],
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -43,8 +42,40 @@ class HomePage extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        const HorizontalScrollBar(),
+        const UtilityButtons(),
         _sneakPeek(),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 300,
+          color: Colors.transparent,
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'My Goals',
+                style: TextStyle(
+                  fontFamily: 'Capriola',
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 190,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

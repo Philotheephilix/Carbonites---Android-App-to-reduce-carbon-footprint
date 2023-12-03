@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/chart_widgets.dart';
+import 'chart_widgets.dart';
 
 class CustomChartWidget extends StatelessWidget {
   final double height;

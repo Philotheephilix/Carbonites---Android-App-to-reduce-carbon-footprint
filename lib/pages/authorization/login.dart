@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text(
                     'Carbon PI',
                     style: TextStyle(
-                      color: Color.fromARGB(207, 237, 228, 228),
+                      color: Color.fromARGB(207, 38, 138, 54),
                       fontFamily: 'Capriola',
                       fontSize: 26,
                       fontWeight: FontWeight.bold,

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../subpages/manage/new_payments.dart';
 
 class MenuDrawer extends StatelessWidget {
-  final Color drawerColor;
+  final List<Color> drawerGradient;
 
   const MenuDrawer({
-    required this.drawerColor,
+    required this.drawerGradient,
     super.key,
   });
 
@@ -18,7 +18,11 @@ class MenuDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: drawerColor,
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: drawerGradient,
+              ),
             ),
             child: const Text(
               'Menu Header',

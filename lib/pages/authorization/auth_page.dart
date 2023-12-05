@@ -3,8 +3,10 @@ import 'package:pi_carbon_tracer/pages/authorization/login.dart';
 import 'package:pi_carbon_tracer/pages/authorization/sign_up.dart';
 
 class AuthorizationPage extends StatefulWidget {
+  const AuthorizationPage({super.key});
+
   @override
-  State createState() => _AuthorizationPageState();
+  State<AuthorizationPage> createState() => _AuthorizationPageState();
 }
 
 class _AuthorizationPageState extends State<AuthorizationPage> {
@@ -20,12 +22,12 @@ class _AuthorizationPageState extends State<AuthorizationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: 800,
+        height: 2000,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xff9DEC98), Color(0xff509BF7)],
+            colors: [Color(0xff9DEC98), Color(0xff0C74EC)],
           ),
         ),
         child: SingleChildScrollView(
@@ -56,7 +58,7 @@ class LoginWidget extends StatelessWidget {
           child: Center(
             child: ToggleButton(
               onToggle: onToggle,
-              label: "Don't have an account?",
+              label: "Don't have an account? sign up!",
             ),
           ),
         ),
@@ -107,8 +109,8 @@ class ToggleButton extends StatelessWidget {
         label,
         style: const TextStyle(
           fontFamily: 'Capriola',
-          color: Color.fromARGB(214, 0, 63, 139),
-          fontSize: 16,
+          fontSize: 14,
+          color: Color(0xFF1F57AD),
         ),
       ),
     );

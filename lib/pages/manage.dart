@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../main_interface/main_page.dart';
 import '../subpages/manage/new_payments.dart';
 import '../widgets/common_top_bar.dart';
-import '../widgets/menu_drawer.dart';
+import '../models/menu_drawer.dart';
 import '../models/buttons.dart';
 import '../subpages/manage/payment_history.dart';
 
@@ -17,14 +17,14 @@ class ManagePage extends StatelessWidget {
         backgroundcolor: Color(0xffADEF8D),
       ),
       drawer: const MenuDrawer(
-        drawerColor: Color(0xffADEF8D),
+        drawerGradient: [Color(0xFF6FD6FF), Color(0xFFBFF098)],
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
-            end: Alignment.bottomRight,
-            colors: [Color(0xffBFF098), Color(0xff6FD6FF)],
+            end: Alignment.bottomLeft,
+            colors: [Color(0xff6FD6FF), Color(0xffBFF098)],
           ),
         ),
         child: _managePageLayout(),
@@ -33,6 +33,7 @@ class ManagePage extends StatelessWidget {
   }
 
   ListView _managePageLayout() {
+    List <Color> buttonGradient = [const Color(0xFF2ECC71), const Color(0xFF27AE60)];
     return ListView(
       children: [
         Container(
@@ -74,27 +75,27 @@ class ManagePage extends StatelessWidget {
             left: 40,
             right: 60,
           ),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconAndTextButton(
                 icon: Icons.currency_rupee,
                 text: 'New Payment',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
-                page: MyTransactionPage(),
+                buttonGradient: buttonGradient,
+                page: const MyTransactionPage(),
               ),
               IconAndTextButton(
                 icon: Icons.history,
                 text: 'Payment history',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
-                page: PaymentHistoryPage(),
+                buttonGradient: buttonGradient,
+                page: const PaymentHistoryPage(),
               ),
               IconAndTextButton(
                 icon: Icons.category,
                 text: 'Categories',
-                backgroundColor: Color.fromARGB(255, 118, 173, 164),
-                page: MainPage(),
+                buttonGradient: buttonGradient,
+                page: const MainScreen(),
               ),
             ],
           ),

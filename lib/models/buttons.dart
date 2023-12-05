@@ -3,49 +3,70 @@ import 'package:flutter/material.dart';
 class IconAndTextButton extends StatelessWidget {
   final IconData icon;
   final String text;
-  final Color backgroundColor;
   final Widget page;
+  final List<Color> buttonGradient;
 
   const IconAndTextButton({
     required this.icon,
     required this.text,
-    required this.backgroundColor,
     required this.page,
+    required this.buttonGradient,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        elevation: 10,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        backgroundColor: backgroundColor,
-        foregroundColor: Colors.white,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Icon(icon),
-          const SizedBox(
-            width: 10,
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: buttonGradient,
           ),
-          Text(
-            text,
-            style: const TextStyle(
-              fontFamily: 'Capriola',
-              fontSize: 20,
+          borderRadius: BorderRadius.circular(20.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              spreadRadius: 5,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
             ),
+          ]),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-        ],
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          shadowColor: Colors.transparent,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(
+              icon,
+              color: const Color(0xFFE5E5E5),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              text,
+              style: const TextStyle(
+                color: Color(0xFFE5E5E5),
+                fontFamily: 'Capriola',
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -44,6 +44,8 @@ dependencies:
   url_launcher: ^6.2.1
   qr_code_scanner: ^1.0.1
   upi_india: ^3.0.1
+  google_nav_bar: ^5.0.6
+
 
   # curved_navigation_bar: ^1.0.3
 

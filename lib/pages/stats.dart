@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 
-import '../widgets/menu_drawer.dart';
+import '../models/menu_drawer.dart';
 import '../widgets/common_top_bar.dart';
 import '../widgets/custom_chart_widget_1.dart';
 import '../models/percentage_circle.dart';
 
-import 'package:pi_carbon_tracer/models/chart_widgets_1.dart';
+import 'package:pi_carbon_tracer/widgets/chart_widgets_1.dart';
 
 String calculateResult(double pipoint) {
   if (pipoint >= 90) {
@@ -83,7 +83,7 @@ class _StatsPageState extends State<StatsPage> {
         backgroundcolor: Color(0xffBCCFFF),
       ),
       drawer: const MenuDrawer(
-        drawerColor: Color(0xffBCCFFF),
+        drawerGradient: [Color(0xFFA1C4FD), Color(0xFFC2E9FB)],
       ),
       body: Container(
         decoration: const BoxDecoration(

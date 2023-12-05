@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     return Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const MainPage(),
+        builder: (context) => const MainScreen(),
       ),
     );
   }
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(.15),
+                color: Colors.black.withOpacity(0.1),
                 spreadRadius: 10,
                 blurRadius: 25,
                 offset: const Offset(0, 5),
@@ -164,10 +164,18 @@ class _LoginPageState extends State<LoginPage> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         gradient: const LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [Color(0xDA769DEF), Color(0x769DEFDA)],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [Color(0xFF94B3E6), Color(0xFFA5C3D1)],
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            spreadRadius: 4,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
       child: ElevatedButton(
         onPressed: () {

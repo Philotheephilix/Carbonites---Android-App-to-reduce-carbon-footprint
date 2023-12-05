@@ -1,6 +1,16 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
+import 'package:upi_india/upi_india.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/subpages/manage/Upi_trans.dart';
+
+class Product {
+  double price;
+
+  Product(this.price);
+}
 
 class MyTransactionPage extends StatefulWidget {
   const MyTransactionPage({super.key});
@@ -16,13 +26,7 @@ class _MyTransactionPageState extends State<MyTransactionPage> {
   double _price = 0.0;
   String _customerName = '';
 
-  List<String> categories = [
-    'Groceries',
-    'Electronics',
-    'Clothing',
-    'Furniture',
-    'Other'
-  ];
+  List<String> categories = ['Food', 'Travel', 'Goods', 'Service', 'Loan'];
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
@@ -56,8 +60,7 @@ class _MyTransactionPageState extends State<MyTransactionPage> {
             colors: [Color(0xffBFF098), Color(0xff6FD6FF)],
           ),
         ),
-        padding:
-            const EdgeInsets.only(top: 100, left: 25, right: 25),
+        padding: const EdgeInsets.only(top: 100, left: 25, right: 25),
         child: _buildLayout(),
       ),
     );
@@ -131,6 +134,21 @@ class _MyTransactionPageState extends State<MyTransactionPage> {
           ),
           const SizedBox(
             height: 20,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => QRScannerScreen(price: _price)),
+              );
+            },
+            child: const Text(
+              'UPI',
+              style: TextStyle(
+                fontFamily: 'Capriola',
+              ),
+            ),
           ),
           ElevatedButton(
             onPressed: _submitForm,

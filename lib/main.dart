@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart' show Db, where;
-import 'package:flutter/material.dart';
-import 'package:mongo_dart/mongo_dart.dart' show Db, where;
+
 import 'package:path_provider/path_provider.dart';
 import 'package:pi_carbon_tracer/pages/authorization/auth_page.dart';
 //import 'package:pi_carbon_tracer/const.dart';

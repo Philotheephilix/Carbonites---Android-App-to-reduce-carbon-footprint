@@ -44,7 +44,7 @@ class IconAndTextButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           backgroundColor: Colors.transparent,
-          foregroundColor: Colors.white,
+          foregroundColor: Colors.black,
           shadowColor: Colors.transparent,
         ),
         child: Row(
@@ -52,7 +52,7 @@ class IconAndTextButton extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: const Color(0xFFE5E5E5),
+              color: Colors.black,
             ),
             const SizedBox(
               width: 10,
@@ -60,7 +60,7 @@ class IconAndTextButton extends StatelessWidget {
             Text(
               text,
               style: const TextStyle(
-                color: Color(0xFFE5E5E5),
+                color: Colors.black,
                 fontFamily: 'Capriola',
                 fontSize: 20,
               ),

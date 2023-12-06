@@ -19,28 +19,31 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CommonTopBar(
-        backgroundcolor: Color(0xff3399FF),
-      ),
-      drawer: const MenuDrawer(
-        drawerGradient: [Color(0xFF4DA6FF), Color(0xFF3670E5)],
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFF3399FF), Color(0xFF3366CC)],
-          ),
+        appBar: const CommonTopBar(
+          backgroundcolor: Color(0xFFBCCFFF),
         ),
-        child: _profileBase(),
-      ),
+        drawer: const MenuDrawer(
+          drawerGradient: [Color(0xFF4DA6FF), Color(0xFF3670E5)],
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xffA1C4FD), Color(0xffC2E9FB)],
+            ),
+          ),
+          child: _profileBase(),
+        )
     );
   }
 
   // this method contains the foundation of this page
   ListView _profileBase() {
-    List <Color> buttonGradient = [const Color(0xFF467CE8), const Color(0xFF3366CC)];
+    List <Color> buttonGradient = [
+      const Color(0xFF96B0F2),
+      const Color(0xFF7BCCFF)
+    ];
     return ListView(
       children: [
         _photoAndEditButton(),
@@ -48,7 +51,7 @@ class ProfilePage extends StatelessWidget {
           height: 400,
           color: Colors.transparent,
           padding: const EdgeInsets.symmetric(horizontal: 50),
-          child:  Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -104,20 +107,24 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            alignment: Alignment.center,
-            height: 148,
-            width: 150,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xFF59A8F7),
-            ),
+              alignment: Alignment.center,
+              height: 148,
+              width: 150,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/profile_folder/png1.jpeg'),
+                  fit: BoxFit.fill,
+                ),
+                shape: BoxShape.circle,
+                color: Color(0xFF59A8F7),
+              ),
           ),
           const SizedBox(
             height: 10,
           ),
           SelectableText(
             username,
-            style:  const TextStyle(
+            style: const TextStyle(
               fontFamily: 'Capriola',
             ),
           ),
@@ -129,7 +136,7 @@ class ProfilePage extends StatelessWidget {
               height: 40,
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF3399FF), Color(0xFF3670E5)],
+                  colors: [Color(0xFF83A2F0), Color(0xFF61BFFA)],
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -149,7 +156,7 @@ class ProfilePage extends StatelessWidget {
                   child: Text(
                     'Edit profile',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontFamily: 'Capriola',
                       fontSize: 20,
                     ),

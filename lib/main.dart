@@ -2,20 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart' show Db, where;
-import 'package:flutter/material.dart';
-import 'package:mongo_dart/mongo_dart.dart' show Db, where;
 import 'package:path_provider/path_provider.dart';
-import 'package:pi_carbon_tracer/pages/authorization/auth_page.dart';
-//import 'package:pi_carbon_tracer/const.dart';
-//import 'package:pi_carbon_tracer/main_interface/main_page.dart';
+import 'package:pi_carbon_tracer/main_interface/onboarding_screen.dart';
+import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
 import 'main_interface/onboarding_screen.dart';
-
-//import 'pages/login.dart`';
-//import 'pages/stats.dart';
-//import 'pages/manage.dart';
-//import 'pages/profile.dart';
-//import 'subpages/payment_history.dart';
-// ignore: non_constant_identifier_names
 import 'dart:io';
 
 void addTransaction(Map<String, dynamic> documentData) async {

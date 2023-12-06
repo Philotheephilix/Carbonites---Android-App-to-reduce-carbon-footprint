@@ -20,8 +20,8 @@ class _MainScreenState extends State<MainScreen> {
   final List<List<Color>> colors = [
     const [Color(0xFF8CF385), Color(0xFF76ABF3)],
     const [Color(0xFFA1C4FD), Color(0xFFC2E9FB)],
-    const [Color(0xFF6FD6FF), Color(0xFFBFF098)],
-    const [Color(0xFF4DA6FF), Color(0xFF3670E5)],
+    const [Color(0xFF8CF385), Color(0xFF76ABF3)],
+    const [Color(0xFFA1C4FD), Color(0xFFC2E9FB)],
   ];
 
   final screen = [
@@ -97,7 +97,7 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icons.manage_history,
               text: 'Manage',
               backgroundGradient: const LinearGradient(
-                colors: [Color(0xFF2ECC71), Color(0xFF27AE60)],
+                colors: [Color(0xFF9AECAB), Color(0xFF85D896)]
               ),
               onPressed: () {
                 setState(() {
@@ -110,7 +110,7 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icons.person,
               text: 'Profile',
               backgroundGradient: const LinearGradient(
-                colors: [Color(0xFF5E91F7), Color(0xFF3366CC)],
+                colors: [Color(0xFF7DC1E8), Color(0xFF83A7D3)],
               ),
               onPressed: () {
                 setState(() {

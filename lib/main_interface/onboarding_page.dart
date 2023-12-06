@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class OnboardingPage extends StatelessWidget {
   final String title;
   final String description;
- //final String image;
+  final String image;
 
   const OnboardingPage(
       {required this.title,
       required this.description,
-      //required this.image,
+      required this.image,
       super.key});
 
   @override
@@ -19,10 +19,10 @@ class OnboardingPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          /*Image.asset(
+          Image.asset(
             image,
             height: 200.0,
-          ),*/
+          ),
           const SizedBox(height: 20.0),
           Text(
             title,

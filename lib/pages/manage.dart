@@ -14,7 +14,7 @@ class ManagePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonTopBar(
-        backgroundcolor: Color(0xffADEF8D),
+        backgroundcolor: Color(0xff9AECAB),
       ),
       drawer: const MenuDrawer(
         drawerGradient: [Color(0xFF6FD6FF), Color(0xFFBFF098)],
@@ -22,9 +22,9 @@ class ManagePage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [Color(0xff6FD6FF), Color(0xffBFF098)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xff9DEC98), Color(0xff509BF7)],
           ),
         ),
         child: _managePageLayout(),
@@ -33,7 +33,7 @@ class ManagePage extends StatelessWidget {
   }
 
   ListView _managePageLayout() {
-    List <Color> buttonGradient = [const Color(0xFF2ECC71), const Color(0xFF27AE60)];
+    List <Color> buttonGradient = [const Color(0xFF9AECAB), const Color(0xFF85D896)];
     return ListView(
       children: [
         Container(

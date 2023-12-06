@@ -13,6 +13,7 @@ class PaymentHistoryPage extends StatefulWidget {
 class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
   List<String> transactions = [];
   String selectedCategory = 'All';
+
   @override
   void initState() {
     super.initState();
@@ -71,8 +72,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
         ),
         Container(
           height: 45,
-          padding:
-              const EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
           decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(20),
@@ -116,10 +116,11 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
       },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          const Color.fromARGB(197, 255, 245, 245).withOpacity(0.5),
+          const Color(0xFF56CFE1),
         ),
         foregroundColor: MaterialStateProperty.all<Color>(
-            const Color.fromARGB(235, 102, 100, 100)),
+          const Color(0xFF000000),
+        ),
       ),
       child: Text(
         text,
@@ -158,7 +159,7 @@ class LegerView extends StatelessWidget {
         padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color.fromARGB(199, 201, 200, 200).withOpacity(0.5),
+            color: const Color(0xFF56CFE1),
             borderRadius: BorderRadius.circular(20),
           ),
           child: ListView.builder(
@@ -174,7 +175,10 @@ class LegerView extends StatelessWidget {
                     style: const TextStyle(fontSize: 16)),
                 trailing: Text(
                   '₹ ${transactionDetails[1]}',
-                  style: TextStyle(fontSize: 20, color: Colors.orange[900]),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Color(0xFFFFFFFF),
+                  ),
                 ),
               );
             },

@@ -34,7 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     // ignore: use_build_context_synchronously
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => AuthorizationPage()),
+      MaterialPageRoute(builder: (context) => const AuthorizationPage()),
     );
   }
 
@@ -50,18 +50,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               OnboardingPage(
                 title: 'Welcome to MyApp',
                 description: 'Discover the amazing features of our app.',
-                //image: 'assets/onboarding1.png',
+                image: 'assets/images/onboarding1.jpg',
               ),
               OnboardingPage(
                 title: 'Explore Features',
                 description:
                     'Explore the various features and functionalities.',
-                //image: 'assets/onboarding2.png',
+                image: 'assets/images/onboarding2.jpg',
               ),
               OnboardingPage(
                 title: 'Get Started',
                 description: 'Get started now and enjoy using our app.',
-                //image: 'assets/onboarding3.png',
+                image: 'assets/images/onboarding3.jpg',
               ),
             ],
           ),

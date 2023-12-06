@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pi_carbon_tracer/subpages/home/leader_board.dart';
+import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
 import 'package:pi_carbon_tracer/subpages/home/my_goals.dart';
 import 'package:pi_carbon_tracer/subpages/home/ocr.dart';
 
@@ -27,32 +27,35 @@ class UtilityButtons extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Buttons(
-                  label: 'OCR',
-                  page: OcrPage(),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Buttons(
-                  label: 'Goals',
-                  page: MyGoalsPage(),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Buttons(
-                  label: 'Leaderboard',
-                  page: LeaderboardPage(),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Buttons(
+                    label: 'OCR',
+                    page: OcrPage(),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Buttons(
+                    label: 'Goals',
+                    page: MyGoalsPage(),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Buttons(
+                    label: 'Leaderboard',
+                    page: LeaderboardPage(),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -78,7 +81,7 @@ class Buttons extends StatelessWidget {
       width: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.blue,
+        color: const Color(0xff9AECAB),
       ),
       child: ElevatedButton(
         onPressed: () {
@@ -90,12 +93,14 @@ class Buttons extends StatelessWidget {
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
           shadowColor: Colors.transparent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
         ),
         child: Text(
           label,
           style: const TextStyle(
+            color: Colors.black,
             fontFamily: 'Capriola',
             fontWeight: FontWeight.bold,
             fontSize: 20,

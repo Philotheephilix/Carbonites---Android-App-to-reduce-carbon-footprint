@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/widgets/report_widget.dart';
 
 import '../models/menu_drawer.dart';
 import '../widgets/common_top_bar.dart';
@@ -75,12 +76,12 @@ class _StatsPageState extends State<StatsPage> {
   }
 
   _StatsPageState createState() => _StatsPageState();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonTopBar(
-        backgroundcolor: Color(0xffBCCFFF),
+        backgroundcolor: Color(0xFFBCCFFF),
       ),
       drawer: const MenuDrawer(
         drawerGradient: [Color(0xFFA1C4FD), Color(0xFFC2E9FB)],
@@ -128,33 +129,7 @@ class _StatsPageState extends State<StatsPage> {
             const SizedBox(
               height: 5,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 20, top: 10),
-              child: Text(
-                'Overall Analysis:-',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Capriola',
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            _subWidgets(
-              300,
-              300,
-              20,
-              Container(
-                child: Text(
-                  calculateResult(piPoints),
-                  style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.green[800],
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Capriola'),
-                ),
-              ),
-            ),
+            const ReportWidget(score: 62,),
           ],
         ),
       ),

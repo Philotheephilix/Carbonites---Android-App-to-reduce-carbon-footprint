@@ -40,7 +40,6 @@ dependencies:
   mongo_dart: ^0.9.3
   path_provider: ^2.1.1
   image_picker: ^1.0.4
-  firebase_core: ^2.23.0
   google_nav_bar: ^5.0.6
 
 
@@ -71,6 +70,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/profile_folder/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

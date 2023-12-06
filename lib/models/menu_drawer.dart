@@ -39,13 +39,13 @@ class MenuDrawer extends StatelessWidget {
             buttonRack: [],
           ),
           const DropDownText(
-            label: '',
-            icon: Icons.home_mini,
+            label: 'Stats',
+            icon: Icons.pie_chart_outline,
             buttonRack: [],
           ),
           const DropDownText(
             label: 'Manage',
-            icon: Icons.manage_accounts_outlined,
+            icon: Icons.manage_history_outlined,
             buttonRack: [
               LabeledButton(
                 label: 'New Payments',
@@ -55,7 +55,7 @@ class MenuDrawer extends StatelessWidget {
           ),
           const DropDownText(
             label: 'Profile',
-            icon: Icons.person_2_rounded,
+            icon: Icons.person_outline,
             buttonRack: [],
           ),
           // Add more ListTile widgets for additional options

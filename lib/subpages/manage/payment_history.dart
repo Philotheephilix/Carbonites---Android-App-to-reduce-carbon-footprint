@@ -111,7 +111,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
     return ElevatedButton(
       onPressed: () {
         setState(() {
-          selectedCategory = text; // Update selected category on button press
+          selectedCategory = text;
         });
       },
       style: ButtonStyle(
@@ -134,12 +134,11 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
 
   List<String> _filterTransactions(String category) {
     if (category == 'All') {
-      return transactions; // Return all transactions if 'All' is selected
+      return transactions;
     } else {
       return transactions
           .where((transaction) => transaction.startsWith(category))
           .toList();
-      // Filter transactions based on category selected
     }
   }
 }

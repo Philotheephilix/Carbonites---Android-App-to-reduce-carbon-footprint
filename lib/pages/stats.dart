@@ -67,12 +67,11 @@ class _StatsPageState extends State<StatsPage> {
   }
 
   double calculateLowPercentage(double value) {
-    double maxValue = 3200;
-    double percentage = (value / maxValue) * 100;
-    double invertedPercentage = percentage;
-    print(value);
-    print(invertedPercentage);
-    return invertedPercentage;
+    const int maxValue = 4000;
+
+    // Calculate the low percentage based on the given value and max value
+    double lowPercentage = (value / maxValue) * 100;
+    return lowPercentage;
   }
 
   _StatsPageState createState() => _StatsPageState();
@@ -129,7 +128,9 @@ class _StatsPageState extends State<StatsPage> {
             const SizedBox(
               height: 5,
             ),
-            const ReportWidget(score: 62,),
+            const ReportWidget(
+              score: 62,
+            ),
           ],
         ),
       ),

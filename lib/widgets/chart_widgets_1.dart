@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -312,7 +311,7 @@ Future<double> storeperc() async {
 Future<Map<String, double>> getCategorySum() async {
   var db = await DB.getDB();
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
 
     final List<Map<String, dynamic>> transactions =
         await collection.find().toList();
@@ -354,15 +353,33 @@ Future<Map<String, double>> getCategorySum() async {
         categoryTotalAmounts[category] = amount;
       }
     }
+    print(categoryTotalAmounts);
+
+    var collectionn = db.collection('leaderboard');
+    var bsonDocument = <String, dynamic>{};
+    double total = 0.0;
+    categoryTotalAmounts.forEach((key, value) {
+      total = total + value;
+      bsonDocument[key] = value;
+    });
+    bsonDocument["name"] = cur_user;
+    bsonDocument["total"] = total;
+
+    var filter = {'name': cur_user};
+
+    await collectionn.update(filter, {'\$set': bsonDocument}, upsert: true);
+
     return categoryTotalAmounts;
   }
   return {};
 }
 
+class ModifierBuilder {}
+
 Future<Map<String, double>> getMonthSum() async {
   var db = await DB.getDB();
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
 
     final List<Map<String, dynamic>> transactions =
         await collection.find().toList();

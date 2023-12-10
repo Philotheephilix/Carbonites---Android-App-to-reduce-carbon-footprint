@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/main.dart';
 import 'package:pi_carbon_tracer/pages/authorization/auth_page.dart';
 import 'package:pi_carbon_tracer/pages/authorization/login.dart';
 
@@ -12,9 +13,9 @@ import '../widgets/common_top_bar.dart';
 import '../models/buttons.dart';
 
 class ProfilePage extends StatelessWidget {
-  final String username = 'Username';
+  final String username = capitalized;
 
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +35,12 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           child: _profileBase(),
-        )
-    );
+        ));
   }
 
   // this method contains the foundation of this page
   ListView _profileBase() {
-    List <Color> buttonGradient = [
+    List<Color> buttonGradient = [
       const Color(0xFF96B0F2),
       const Color(0xFF7BCCFF)
     ];
@@ -107,17 +107,17 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         children: [
           Container(
-              alignment: Alignment.center,
-              height: 148,
-              width: 150,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/profile_folder/png1.jpeg'),
-                  fit: BoxFit.fill,
-                ),
-                shape: BoxShape.circle,
-                color: Color(0xFF59A8F7),
+            alignment: Alignment.center,
+            height: 148,
+            width: 150,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/profile_folder/png1.jpeg'),
+                fit: BoxFit.fill,
               ),
+              shape: BoxShape.circle,
+              color: Color(0xFF59A8F7),
+            ),
           ),
           const SizedBox(
             height: 10,

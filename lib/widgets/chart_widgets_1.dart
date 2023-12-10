@@ -262,7 +262,7 @@ Future<List<MonthlyData>> generateData() async {
 Future<double> storeperc() async {
   var db = await DB.getDB();
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
 
     final List<Map<String, dynamic>> transactions =
         await collection.find().toList();

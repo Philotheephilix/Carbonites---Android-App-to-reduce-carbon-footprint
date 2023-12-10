@@ -28,7 +28,7 @@ class _MainScreenState extends State<MainScreen> {
     const HomePage(),
     const StatsPage(),
     const ManagePage(),
-    const ProfilePage(),
+    ProfilePage(),
   ];
 
   @override
@@ -97,8 +97,7 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icons.manage_history,
               text: 'Manage',
               backgroundGradient: const LinearGradient(
-                colors: [Color(0xFF9AECAB), Color(0xFF85D896)]
-              ),
+                  colors: [Color(0xFF9AECAB), Color(0xFF85D896)]),
               onPressed: () {
                 setState(() {
                   currentIndex = 2;

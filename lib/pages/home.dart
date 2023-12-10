@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/main.dart';
 
 import '../widgets/custom_chart_widget.dart';
 import '../models/menu_drawer.dart';
@@ -114,7 +115,7 @@ class HomePage extends StatelessWidget {
             height: 5,
           ),
           Text(
-            'Welcome $username!',
+            'Welcome $capitalized!',
             style: TextStyle(
               color: Colors.black,
               fontFamily: 'Capriola',

@@ -2,13 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart'
-    show Db, where, modify, UpdateOneOptions;
+    show Db, where, modify, UpdateOneOptions, Sort;
 import 'package:path_provider/path_provider.dart';
 import 'package:pi_carbon_tracer/main_interface/onboarding_screen.dart';
 import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
 import 'main_interface/onboarding_screen.dart';
 import 'dart:io';
 
+String capitalized = "";
 String cur_user = "";
 void addTransaction(Map<String, dynamic> documentData) async {
   var db = await DB.getDB();
@@ -68,6 +69,8 @@ Future<bool> loginin(String user, String passs) async {
     var val = await collection.findOne(where.eq("email", user));
     List<String> parts = user.split('@');
     cur_user = parts[0];
+    capitalized =
+        cur_user[0].toUpperCase() + cur_user.substring(1).toLowerCase();
 
     print('Found: $val');
 

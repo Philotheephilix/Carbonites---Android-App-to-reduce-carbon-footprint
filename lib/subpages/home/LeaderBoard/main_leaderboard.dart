@@ -41,7 +41,7 @@ class _MainLeaderBoardPageState extends State<MainLeaderBoardPage> {
       for (var entry in cursor) {
         List<String> rowData = [
           entry['name']?.toString() ?? '', // Ensure name is converted to String
-          '${((entry['total'] ?? 0) - 5000).abs()} pts'
+          '${((entry['total'] ?? 0) - 1000).toInt().abs()} pts'
         ];
         if (entry["name"] == cur_user) {
           place_cur_user = i;

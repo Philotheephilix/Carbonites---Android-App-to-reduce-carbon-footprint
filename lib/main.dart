@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart'
     show Db, where, modify, UpdateOneOptions, Sort;
 import 'package:path_provider/path_provider.dart';
+
 import 'package:pi_carbon_tracer/main_interface/onboarding_screen.dart';
 import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
 import 'main_interface/onboarding_screen.dart';
@@ -11,6 +12,7 @@ import 'dart:io';
 
 String capitalized = "";
 String cur_user = "";
+
 void addTransaction(Map<String, dynamic> documentData) async {
   var db = await DB.getDB();
 
@@ -38,7 +40,6 @@ Future<int> calculateTotalPriceForMonth(int targetMonth) async {
         totalPrice += price.toInt();
       } else {}
     });
-
     return totalPrice;
   }
   return 0;

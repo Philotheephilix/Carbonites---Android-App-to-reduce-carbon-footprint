@@ -1,6 +1,62 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/main.dart';
+import 'package:pi_carbon_tracer/widgets/chart_widgets_1.dart';
+
+Map categoryTotalAmounts = {};
+
+Future<Map<String, double>> getCategorySum() async {
+  var db = await DB.getDB();
+  if (db != null) {
+    var collection = db.collection(cur_user);
+
+    final List<Map<String, dynamic>> transactions =
+        await collection.find().toList();
+
+    Map<String, double> categoryTotalAmounts = {};
+    per_amount = 0;
+    for (var transaction in transactions) {
+      final category = transaction['category'];
+      double amount = transaction['amount'].toDouble();
+      if (category == 'Travel') {
+        amount = amount * .26;
+        per_amount = per_amount + amount;
+      } else if (category == 'Home') {
+        amount = amount * .22;
+        per_amount = per_amount + amount;
+      } else if (category == 'Food') {
+        amount = amount * .16;
+        per_amount = per_amount + amount;
+      } else if (category == 'Goods') {
+        amount = amount * .15;
+        per_amount = per_amount + amount;
+      } else if (category == 'Services') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Loan') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Medicine') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else {
+        amount = amount * .10;
+        per_amount = per_amount + amount;
+      }
+      if (categoryTotalAmounts.containsKey(category)) {
+        categoryTotalAmounts[category] =
+            categoryTotalAmounts[category]! + amount;
+      } else {
+        categoryTotalAmounts[category] = amount;
+      }
+    }
+    print(categoryTotalAmounts["Food"]);
+    print(categoryTotalAmounts);
+    print((categoryTotalAmounts['Food']! / per_amount) * 310);
+
+    return categoryTotalAmounts;
+  }
+  return {};
+}
 
 class ReportWidget extends StatefulWidget {
   const ReportWidget({
@@ -90,10 +146,12 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _dataElement(Colors.pink, 62),
-            _dataElement(Colors.green, 62),
-            _dataElement(Colors.red, 62),
+            _dataElement(Colors.pink, 'Travel'),
+            _dataElement(Colors.green, 'Goods'),
+            _dataElement(Colors.red, 'Service'),
+            _dataElement(Color.fromARGB(255, 172, 211, 0), 'Lifestyle'),
           ],
         ),
         const SizedBox(
@@ -101,17 +159,18 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _dataElement(Colors.blue, 62),
-            _dataElement(Colors.orange, 62),
-            _dataElement(Colors.redAccent, 62)
+            _dataElement(Colors.blue, 'Food'),
+            _dataElement(Colors.orange, 'Loan'),
+            _dataElement(Color.fromARGB(117, 244, 67, 54), 'Healthcare')
           ],
         ),
       ],
     );
   }
 
-  Row _dataElement(Color color, int percent) {
+  Row _dataElement(Color color, String percent) {
     return Row(
       children: [
         Container(
@@ -162,26 +221,34 @@ class _CategoryWisePercentBarState extends State<CategoryWisePercentBar> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: 62,
+                width: (categoryTotalAmounts['Travel']! / per_amount) * 310,
                 decoration: const BoxDecoration(
                   color: Colors.pink,
                 ),
               ),
               Container(
-                width: 62,
+                width: (categoryTotalAmounts['Food']! / per_amount) * 310,
                 color: Colors.blue,
               ),
               Container(
-                width: 62,
+                width: (categoryTotalAmounts['Goods']! / per_amount) * 310,
                 color: Colors.green,
               ),
               Container(
-                width: 62,
+                width: (categoryTotalAmounts['Loan']! / per_amount) * 310,
                 color: Colors.orange,
               ),
               Container(
-                width: 62,
+                width: (categoryTotalAmounts['Service']! / per_amount) * 310,
                 color: Colors.red,
+              ),
+              Container(
+                width: (categoryTotalAmounts['Healthcare']! / per_amount) * 310,
+                color: const Color.fromARGB(117, 244, 67, 54),
+              ),
+              Container(
+                width: (categoryTotalAmounts['Lifestyle']! / per_amount) * 310,
+                color: Color.fromARGB(255, 172, 211, 0),
               ),
             ],
           ),

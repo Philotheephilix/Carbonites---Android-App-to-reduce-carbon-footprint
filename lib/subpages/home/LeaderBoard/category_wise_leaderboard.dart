@@ -29,6 +29,8 @@ class _CategoryWiseLeaderBoardPageState
     List<List<String>> goodsData = await CategoryWiseData()._goods();
     List<List<String>> serviceData = await CategoryWiseData()._service();
     List<List<String>> loanData = await CategoryWiseData()._loan();
+    List<List<String>> healthcareData = await CategoryWiseData()._healthcare();
+    List<List<String>> lifestyleData = await CategoryWiseData()._lifestyle();
 
     // Now that you have the data, you can update your UI or assign it to the ladderData
     setState(() {
@@ -45,6 +47,8 @@ class _CategoryWiseLeaderBoardPageState
       CategoryWiseData()._goods(),
       CategoryWiseData()._service(),
       CategoryWiseData()._loan(),
+      CategoryWiseData()._lifestyle(),
+      CategoryWiseData()._healthcare(),
     ];
     _initializeData();
   }
@@ -82,6 +86,10 @@ class _CategoryWiseLeaderBoardPageState
           _divertButton('Service', 3),
           const SizedBox(width: 10),
           _divertButton('Loan', 4),
+          const SizedBox(width: 10),
+          _divertButton('Healthcare', 5),
+          const SizedBox(width: 10),
+          _divertButton('Lifestyle', 6),
           const SizedBox(width: 10),
         ],
       ),
@@ -137,6 +145,12 @@ class _CategoryWiseLeaderBoardPageState
       case 4:
         selectedData = await CategoryWiseData()._loan();
         break;
+      case 5:
+        selectedData = await CategoryWiseData()._healthcare();
+        break;
+      case 6:
+        selectedData = await CategoryWiseData()._lifestyle();
+        break;
       // Add more cases for other categories if needed...
       default:
       // Handle default case if necessary
@@ -166,7 +180,7 @@ class CategoryWiseData {
       for (var entry in cursor) {
         List<String> rowData = [
           entry['name']?.toString() ?? '', // Ensure name is converted to String
-          '${((entry['Food'] ?? 0) - 1000).abs()} pts'
+          '${((entry['Food'] ?? 0) - 1000).toInt().abs()} pts'
         ];
         if (entry["name"] == cur_user) {
           place_cur_user = i;
@@ -201,7 +215,7 @@ class CategoryWiseData {
       for (var entry in cursor) {
         List<String> rowData = [
           entry['name']?.toString() ?? '', // Ensure name is converted to String
-          '${((entry['Travel'] ?? 0) - 1000).abs()} pts'
+          '${((entry['Travel'] ?? 0) - 1000).toInt().abs()} pts'
         ];
         if (entry["name"] == cur_user) {
           place_cur_user = i;
@@ -236,7 +250,7 @@ class CategoryWiseData {
       for (var entry in cursor) {
         List<String> rowData = [
           entry['name']?.toString() ?? '', // Ensure name is converted to String
-          '${((entry['Goods'] ?? 0) - 1000).abs()} pts'
+          '${((entry['Goods'] ?? 0) - 1000).toInt().abs()} pts'
         ];
         if (entry["name"] == cur_user) {
           place_cur_user = i;
@@ -271,7 +285,7 @@ class CategoryWiseData {
       for (var entry in cursor) {
         List<String> rowData = [
           entry['name']?.toString() ?? '', // Ensure name is converted to String
-          '${((entry['Service'] ?? 0) - 1000).abs()} pts'
+          '${((entry['Service'] ?? 0) - 1000).toInt().abs()} pts'
         ];
         if (entry["name"] == cur_user) {
           place_cur_user = i;
@@ -306,7 +320,77 @@ class CategoryWiseData {
       for (var entry in cursor) {
         List<String> rowData = [
           entry['name']?.toString() ?? '', // Ensure name is converted to String
-          '${((entry['Loan'] ?? 0) - 1000).abs()} pts'
+          '${((entry['Loan'] ?? 0) - 1000).toInt().abs()} pts'
+        ];
+        if (entry["name"] == cur_user) {
+          place_cur_user = i;
+        } else {
+          i = i + 1;
+          place_cur_user = i;
+        }
+        names.add(rowData);
+      }
+
+      print(names);
+      return names;
+    }
+    return [];
+  }
+
+  Future<List<List<String>>> _lifestyle() async {
+    var db = await DB.getDB();
+
+    if (db != null) {
+      var collection = db.collection('leaderboard');
+      var cursor = await collection
+          .find(
+            where.sortBy('Lifestyle',
+                descending: false), // Replace 'fieldName' with your field name
+          )
+          .toList();
+
+      // Extracting data from MongoDB cursor and transforming it into the required format
+      List<List<String>> names = [];
+      int i = 1;
+      for (var entry in cursor) {
+        List<String> rowData = [
+          entry['name']?.toString() ?? '', // Ensure name is converted to String
+          '${((entry['Lifestyle'] ?? 0) - 1000).toInt().abs()} pts'
+        ];
+        if (entry["name"] == cur_user) {
+          place_cur_user = i;
+        } else {
+          i = i + 1;
+          place_cur_user = i;
+        }
+        names.add(rowData);
+      }
+
+      print(names);
+      return names;
+    }
+    return [];
+  }
+
+  Future<List<List<String>>> _healthcare() async {
+    var db = await DB.getDB();
+
+    if (db != null) {
+      var collection = db.collection('leaderboard');
+      var cursor = await collection
+          .find(
+            where.sortBy('Healthcare',
+                descending: false), // Replace 'fieldName' with your field name
+          )
+          .toList();
+
+      // Extracting data from MongoDB cursor and transforming it into the required format
+      List<List<String>> names = [];
+      int i = 1;
+      for (var entry in cursor) {
+        List<String> rowData = [
+          entry['name']?.toString() ?? '', // Ensure name is converted to String
+          '${((entry['Healthcare'] ?? 0) - 1000).toInt().abs()} pts'
         ];
         if (entry["name"] == cur_user) {
           place_cur_user = i;

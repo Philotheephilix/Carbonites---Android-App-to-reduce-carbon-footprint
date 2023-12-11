@@ -4,7 +4,6 @@ import 'package:pi_carbon_tracer/main.dart';
 import 'package:upi_india/upi_india.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/subpages/manage/Upi_trans.dart';
 
 class Product {
@@ -27,7 +26,15 @@ class _MyTransactionPageState extends State<MyTransactionPage> {
   String _category = '';
   double _price = 0.0;
 
-  List<String> categories = ['Food', 'Travel', 'Goods', 'Service', 'Loan'];
+  List<String> categories = [
+    'Food',
+    'Travel',
+    'Goods',
+    'Lifestyle',
+    'Healthcare',
+    'Loan',
+    "Service",
+  ];
 
   Future<void> _submitForm() async {
     var db = await DB.getDB();

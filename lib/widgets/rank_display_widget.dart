@@ -22,7 +22,7 @@ class _RankDisplayWidgetState extends State<RankDisplayWidget> {
           Container(
             height: 200,
             decoration: BoxDecoration(
-              color: Colors.white70,
+              color: Colors.white70.withOpacity(0.6),
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: const Column(

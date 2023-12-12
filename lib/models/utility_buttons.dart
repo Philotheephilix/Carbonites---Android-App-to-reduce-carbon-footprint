@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pi_carbon_tracer/subpages/home/Contributions/contribution_screen.dart';
 import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
 import 'package:pi_carbon_tracer/subpages/home/my_goals.dart';
 import 'package:pi_carbon_tracer/subpages/home/ocr.dart';
@@ -54,6 +56,13 @@ class UtilityButtons extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
+                  Buttons(
+                    label: 'Contribute & Community',
+                    page: ContributeScreen(),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
                 ],
               ),
             ),
@@ -99,6 +108,7 @@ class Buttons extends StatelessWidget {
         ),
         child: Text(
           label,
+          textAlign: TextAlign.center,
           style: const TextStyle(
             color: Colors.black,
             fontFamily: 'Capriola',

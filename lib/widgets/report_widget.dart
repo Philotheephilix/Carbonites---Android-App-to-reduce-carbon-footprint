@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/models/buttons.dart';
 
 class ReportWidget extends StatefulWidget {
   const ReportWidget({
@@ -15,6 +14,25 @@ class ReportWidget extends StatefulWidget {
 }
 
 class _ReportWidgetState extends State<ReportWidget> {
+  final List<List<dynamic>> colorCategoryData = [
+    [Colors.pink, 'food'],
+    [Colors.blue, 'travel'],
+    [Colors.green, 'goods'],
+    [Colors.orange, 'service'],
+    [Colors.red, 'loan'],
+    [Colors.black, ''],
+
+  ];
+
+  final List<List<dynamic>> colorPercentData = [
+    [Colors.pink, '60'],
+    [Colors.blue, '60'],
+    [Colors.green, '60'],
+    [Colors.orange, '60'],
+    [Colors.red, '60'],
+    [Colors.black, '60'],
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,13 +46,25 @@ class _ReportWidgetState extends State<ReportWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Report',
-            style: TextStyle(
-              fontFamily: 'Capriola',
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Report',
+                style: TextStyle(
+                  fontFamily: 'Capriola',
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              CustomPopupButton(
+                dimensions: const [120.0, 40.0],
+                content: _popupContainer(),
+                label: 'Legends',
+                labelSize: 16,
+                gradient: const [Color(0xFF96B0F2), Color(0xFF7BCCFF)],
+              ),
+            ],
           ),
           const SizedBox(
             height: 10.0,
@@ -47,12 +77,16 @@ class _ReportWidgetState extends State<ReportWidget> {
             ),
             child: Column(
               children: [
-                const CategoryWisePercentBar(),
+                CategoryWisePercentBar(
+                  dataList: colorPercentData,
+                ),
                 Container(
                   height: 140,
                   color: Colors.transparent,
                   padding: const EdgeInsets.all(20),
-                  child: const PercentIndicators(),
+                  child: PercentIndicators(
+                    dataList: colorPercentData,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -71,18 +105,27 @@ class _ReportWidgetState extends State<ReportWidget> {
       ),
     );
   }
+
+  Container _popupContainer() {
+    return Container(
+                width: 300,
+                height: 200,
+                color: Colors.transparent,
+                child: PercentIndicators(
+                  dataList: colorCategoryData,
+                ),
+              );
+  }
 }
 
-class PercentIndicators extends StatefulWidget {
+class PercentIndicators extends StatelessWidget {
   const PercentIndicators({
     super.key,
+    required this.dataList,
   });
 
-  @override
-  State<PercentIndicators> createState() => _PercentIndicatorsState();
-}
+  final List<List<dynamic>> dataList;
 
-class _PercentIndicatorsState extends State<PercentIndicators> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -90,10 +133,11 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _dataElement(Colors.pink, 62),
-            _dataElement(Colors.green, 62),
-            _dataElement(Colors.red, 62),
+            _dataElement(dataList[0]),
+            _dataElement(dataList[1]),
+            _dataElement(dataList[2]),
           ],
         ),
         const SizedBox(
@@ -101,17 +145,18 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _dataElement(Colors.blue, 62),
-            _dataElement(Colors.orange, 62),
-            _dataElement(Colors.redAccent, 62)
+            _dataElement(dataList[3]),
+            _dataElement(dataList[4]),
+            _dataElement(dataList[5]),
           ],
         ),
       ],
     );
   }
 
-  Row _dataElement(Color color, int percent) {
+  Row _dataElement(List<dynamic> data) {
     return Row(
       children: [
         Container(
@@ -119,28 +164,26 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
           width: 20,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: color,
+            color: data[0],
           ),
         ),
         const SizedBox(
           width: 20,
         ),
-        Text(percent.toString()),
+        Text(data[1]),
       ],
     );
   }
 }
 
-class CategoryWisePercentBar extends StatefulWidget {
+class CategoryWisePercentBar extends StatelessWidget {
   const CategoryWisePercentBar({
     super.key,
+    required this.dataList,
   });
 
-  @override
-  State<CategoryWisePercentBar> createState() => _CategoryWisePercentBarState();
-}
+  final List<List<dynamic>> dataList;
 
-class _CategoryWisePercentBarState extends State<CategoryWisePercentBar> {
   @override
   Widget build(BuildContext context) {
     double widgetHeight = 15;
@@ -153,35 +196,33 @@ class _CategoryWisePercentBarState extends State<CategoryWisePercentBar> {
       child: Center(
         child: Container(
           height: widgetHeight,
-          width: 310,
+          width: 300,
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.transparent,
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: 62,
-                decoration: const BoxDecoration(
-                  color: Colors.pink,
-                ),
+                width: double.parse(dataList[0][1]),
+                color: dataList[0][0],
               ),
               Container(
-                width: 62,
-                color: Colors.blue,
+                width: double.parse(dataList[1][1]),
+                color: dataList[1][0],
               ),
               Container(
-                width: 62,
-                color: Colors.green,
+                width: double.parse(dataList[2][1]),
+                color: dataList[2][0],
               ),
               Container(
-                width: 62,
-                color: Colors.orange,
+                width: double.parse(dataList[3][1]),
+                color: dataList[3][0],
               ),
               Container(
-                width: 62,
-                color: Colors.red,
+                width: double.parse(dataList[4][1]),
+                color: dataList[4][0],
               ),
             ],
           ),

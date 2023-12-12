@@ -14,6 +14,9 @@ class _MyGoalsPageState extends State<MyGoalsPage> {
       appBar: AppBar(
         title: const Text('Goals'),
       ),
+      body: Container(
+        color: Colors.pink,
+      ),
     );
   }
 }

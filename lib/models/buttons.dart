@@ -28,7 +28,7 @@ class IconAndTextButton extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               spreadRadius: 5,
               blurRadius: 5,
-              offset: const Offset(0, 3),
+              offset: const Offset(3, 3),
             ),
           ]),
       child: ElevatedButton(
@@ -44,7 +44,7 @@ class IconAndTextButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           backgroundColor: Colors.transparent,
-          foregroundColor: Colors.black,
+          foregroundColor: Colors.white70,
           shadowColor: Colors.transparent,
         ),
         child: Row(
@@ -68,6 +68,81 @@ class IconAndTextButton extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CustomPopupButton extends StatelessWidget {
+  const CustomPopupButton({
+    super.key,
+    required this.dimensions,
+    required this.content,
+    required this.label,
+    required this.labelSize,
+    required this.gradient,
+  });
+
+  final List<double> dimensions;
+  final Widget content;
+  final String label;
+  final double labelSize;
+  final List<Color> gradient;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: dimensions[0],
+      height: dimensions[1],
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradient,
+        ),
+        borderRadius: BorderRadius.circular(20.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 5,
+            blurRadius: 5,
+            offset: const Offset(3, 3),
+          ),
+        ],
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          _showPopupBox(context);
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          shadowColor: Colors.transparent,
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: 'Capriola',
+            fontSize: labelSize,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showPopupBox(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            label,
+            style: const TextStyle(
+              fontFamily: 'Capriola',
+              fontSize: 20,
+            ),
+          ),
+          content: content,
+        );
+      },
     );
   }
 }

@@ -37,7 +37,9 @@ String calculateResult(double pipoint) {
 Future<double> value = storeperc();
 
 class StatsPage extends StatefulWidget {
-  const StatsPage({Key? key}) : super(key: key);
+  const StatsPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _StatsPageState createState() => _StatsPageState();
@@ -129,7 +131,9 @@ class _StatsPageState extends State<StatsPage> {
             const SizedBox(
               height: 5,
             ),
-            const ReportWidget(score: 62,),
+            const ReportWidget(
+              score: 62,
+            ),
           ],
         ),
       ),

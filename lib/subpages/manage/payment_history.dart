@@ -102,6 +102,10 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
           const SizedBox(width: 10),
           _divertButton('Loan'),
           const SizedBox(width: 10),
+          _divertButton('Healthcare'),
+          const SizedBox(width: 10),
+          _divertButton('Lifestyle'),
+          const SizedBox(width: 10),
         ],
       ),
     );

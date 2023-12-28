@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/main.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:pi_carbon_tracer/pages/stats.dart';
 
 double per_amount = 0;
 
@@ -260,10 +258,63 @@ Future<List<MonthlyData>> generateData() async {
   return monthlyData;
 }
 
+Future<Map<String, double>> getCCategorySum() async {
+  var db = await DB.getDB();
+  if (db != null) {
+    var collection = db.collection(cur_user);
+
+    final List<Map<String, dynamic>> transactions =
+        await collection.find().toList();
+
+    Map<String, double> categoryTotalAmounts = {};
+    per_amount = 0;
+    for (var transaction in transactions) {
+      final category = transaction['category'];
+      double amount = transaction['amount'].toDouble();
+      if (category == 'Travel') {
+        amount = amount * .26;
+        per_amount = per_amount + amount;
+      } else if (category == 'Home') {
+        amount = amount * .22;
+        per_amount = per_amount + amount;
+      } else if (category == 'Food') {
+        amount = amount * .16;
+        per_amount = per_amount + amount;
+      } else if (category == 'Goods') {
+        amount = amount * .15;
+        per_amount = per_amount + amount;
+      } else if (category == 'Services') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Loan') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else if (category == 'Medicine') {
+        amount = amount * .11;
+        per_amount = per_amount + amount;
+      } else {
+        amount = amount * .10;
+        per_amount = per_amount + amount;
+      }
+      if (categoryTotalAmounts.containsKey(category)) {
+        categoryTotalAmounts[category] =
+            categoryTotalAmounts[category]! + amount;
+      } else {
+        categoryTotalAmounts[category] = amount;
+      }
+    }
+    print(categoryTotalAmounts["Food"]);
+    print(categoryTotalAmounts);
+    print((categoryTotalAmounts['Food']! / per_amount) * 310);
+    return categoryTotalAmounts;
+  }
+  return {};
+}
+
 Future<double> storeperc() async {
   var db = await DB.getDB();
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
 
     final List<Map<String, dynamic>> transactions =
         await collection.find().toList();
@@ -306,13 +357,14 @@ Future<double> storeperc() async {
       }
     }
   }
+  print(per_amount);
   return per_amount;
 }
 
 Future<Map<String, double>> getCategorySum() async {
   var db = await DB.getDB();
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
 
     final List<Map<String, dynamic>> transactions =
         await collection.find().toList();
@@ -354,15 +406,35 @@ Future<Map<String, double>> getCategorySum() async {
         categoryTotalAmounts[category] = amount;
       }
     }
+    print(categoryTotalAmounts["Food"]);
+    print(categoryTotalAmounts);
+    print((categoryTotalAmounts['Food']! / per_amount) * 310);
+
+    var collectionn = db.collection('leaderboard');
+    var bsonDocument = <String, dynamic>{};
+    double total = 0.0;
+    categoryTotalAmounts.forEach((key, value) {
+      total = total + value;
+      bsonDocument[key] = value;
+    });
+    bsonDocument["name"] = cur_user;
+    bsonDocument["total"] = total;
+
+    var filter = {'name': cur_user};
+
+    await collectionn.update(filter, {'\$set': bsonDocument}, upsert: true);
+
     return categoryTotalAmounts;
   }
   return {};
 }
 
+class ModifierBuilder {}
+
 Future<Map<String, double>> getMonthSum() async {
   var db = await DB.getDB();
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
 
     final List<Map<String, dynamic>> transactions =
         await collection.find().toList();

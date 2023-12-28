@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/main.dart';
 import 'package:pi_carbon_tracer/pages/authorization/auth_page.dart';
 
 import '../subpages/profile/about_us.dart';
@@ -46,6 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           child: _profileBase(),
+        ));
         ));
   }
 

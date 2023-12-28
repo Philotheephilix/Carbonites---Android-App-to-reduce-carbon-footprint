@@ -1,18 +1,23 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:mongo_dart/mongo_dart.dart' show Db, where;
+import 'package:mongo_dart/mongo_dart.dart'
+    show Db, where, modify, UpdateOneOptions, Sort;
 import 'package:path_provider/path_provider.dart';
+
 import 'package:pi_carbon_tracer/main_interface/onboarding_screen.dart';
 import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
 import 'main_interface/onboarding_screen.dart';
 import 'dart:io';
 
+String capitalized = "";
+String cur_user = "";
+
 void addTransaction(Map<String, dynamic> documentData) async {
   var db = await DB.getDB();
 
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
     await collection.insert(documentData);
     print("added");
   }
@@ -21,7 +26,7 @@ void addTransaction(Map<String, dynamic> documentData) async {
 Future<int> calculateTotalPriceForMonth(int targetMonth) async {
   var db = await DB.getDB();
   if (db != null) {
-    var collection = db.collection('philo');
+    var collection = db.collection(cur_user);
     var query = where.eq('month', targetMonth);
 
     var cursor = collection.find(query);
@@ -35,7 +40,6 @@ Future<int> calculateTotalPriceForMonth(int targetMonth) async {
         totalPrice += price.toInt();
       } else {}
     });
-
     return totalPrice;
   }
   return 0;
@@ -64,6 +68,10 @@ Future<bool> loginin(String user, String passs) async {
   if (db != null) {
     var collection = db.collection('customerdata');
     var val = await collection.findOne(where.eq("email", user));
+    List<String> parts = user.split('@');
+    cur_user = parts[0];
+    capitalized =
+        cur_user[0].toUpperCase() + cur_user.substring(1).toLowerCase();
 
     print('Found: $val');
 

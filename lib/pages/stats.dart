@@ -10,30 +10,6 @@ import '../models/percentage_circle.dart';
 
 import 'package:pi_carbon_tracer/widgets/chart_widgets_1.dart';
 
-String calculateResult(double pipoint) {
-  if (pipoint >= 90) {
-    return "High Percentage - Our collective efforts in reducing carbon emissions pave the way for a cleaner, sustainable future. Let's continue striving together to make our world free from harmful emissions!";
-  } else if (pipoint >= 80) {
-    return "Great Effort - Embracing clean energy not only reduces carbon emissions but also sets the stage for a world where our environment thrives. Keep pushing for a future powered by clean, renewable energy!";
-  } else if (pipoint >= 70) {
-    return "Progressing Well - As we take steps to curb carbon emissions, we contribute to a greener world for generations to come. Let's persist in our journey toward a carbon-neutral future!";
-  } else if (pipoint >= 60) {
-    return "On the Right Track - Transitioning to clean energy sources marks a significant milestone in our commitment to combat climate change. Every move towards a carbon-free world matters!";
-  } else if (pipoint >= 50) {
-    return "Halfway There - Imagine a world free from carbon emissions, where nature thrives and future generations flourish. Let's work persistently towards this vision!";
-  } else if (pipoint >= 40) {
-    return "Making Strides - Our dedication to clean energy is a testament to our responsibility towards the planet. Every effort brings us closer to a world liberated from harmful emissions!";
-  } else if (pipoint >= 30) {
-    return "Taking Action - By reducing our carbon footprint, we lay the foundation for a healthier planet. Let's amplify our efforts to create a cleaner, sustainable environment!";
-  } else if (pipoint >= 20) {
-    return "Start Today - Each step towards a carbon-free world is a leap towards safeguarding our planet. Let's initiate actions today that shape a cleaner, greener tomorrow!";
-  } else if (pipoint >= 10) {
-    return "Small Steps - Even the smallest actions count in our journey towards a world free from carbon emissions. Let's join hands and make a meaningful impact together!";
-  } else {
-    return "Other Cases - Envision a world where carbon emissions are a thing of the past. Let's persist in our efforts to create a sustainable future for all!";
-  }
-}
-
 Future<double> value = storeperc();
 
 class StatsPage extends StatefulWidget {
@@ -48,7 +24,9 @@ class StatsPage extends StatefulWidget {
 class _StatsPageState extends State<StatsPage> {
   late double value;
   late double piPoints = 0;
-
+  late double direct = 0;
+  late double indirect = 0;
+  late Map<String, double> categoryTotalAmounts = {};
   @override
   void initState() {
     super.initState();
@@ -58,9 +36,21 @@ class _StatsPageState extends State<StatsPage> {
   Future<void> _fetchValueAndCalculate() async {
     try {
       double fetchedValue = await storeperc();
+      categoryTotalAmounts = await getCCategorySum() as Map<String, double>;
+
       setState(() {
         value = fetchedValue.toDouble();
-        piPoints = calculateLowPercentage(value).toInt().toDouble();
+        piPoints = calculateLowPercentage(value, 16000).toInt().toDouble();
+        direct = calculateLowPercentage(
+            categoryTotalAmounts['Travel']! + categoryTotalAmounts['Food']!,
+            7000);
+        indirect = calculateLowPercentage(
+            categoryTotalAmounts['Travel']! +
+                categoryTotalAmounts['Food']! +
+                categoryTotalAmounts['Goods']! +
+                categoryTotalAmounts['Service']! +
+                categoryTotalAmounts['Loan']!,
+            11000);
       });
     } catch (error) {
       print('Error: $error');
@@ -68,13 +58,10 @@ class _StatsPageState extends State<StatsPage> {
     }
   }
 
-  double calculateLowPercentage(double value) {
-    double maxValue = 3200;
-    double percentage = (value / maxValue) * 100;
-    double invertedPercentage = percentage;
-    print(value);
-    print(invertedPercentage);
-    return invertedPercentage;
+  double calculateLowPercentage(double value, int maxValue) {
+    // Calculate the low percentage based on the given value and max value
+    double lowPercentage = (value / maxValue) * 100;
+    return lowPercentage;
   }
 
   _StatsPageState createState() => _StatsPageState();
@@ -113,7 +100,7 @@ class _StatsPageState extends State<StatsPage> {
                   180,
                   10,
                   PercentageCircle(
-                    percentage: piPoints,
+                    percentage: direct,
                     color: Colors.green,
                   ),
                 ),
@@ -121,8 +108,8 @@ class _StatsPageState extends State<StatsPage> {
                   180,
                   180,
                   10,
-                  const PercentageCircle(
-                    percentage: 87,
+                  PercentageCircle(
+                    percentage: indirect,
                     color: Colors.blue,
                   ),
                 ),
@@ -133,6 +120,9 @@ class _StatsPageState extends State<StatsPage> {
             ),
             const ReportWidget(
               score: 62,
+            ),
+            ReportWidget(
+              score: piPoints.toInt(),
             ),
           ],
         ),

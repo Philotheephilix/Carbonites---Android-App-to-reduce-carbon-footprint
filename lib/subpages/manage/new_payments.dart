@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
+import 'package:pi_carbon_tracer/main.dart';
 import 'package:upi_india/upi_india.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/subpages/manage/Upi_trans.dart';
 
 class Product {
@@ -22,20 +22,43 @@ class MyTransactionPage extends StatefulWidget {
 
 class _MyTransactionPageState extends State<MyTransactionPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   String _category = '';
   double _price = 0.0;
-  String _customerName = '';
 
-  List<String> categories = ['Food', 'Travel', 'Goods', 'Service', 'Loan'];
+  List<String> categories = [
+    'Food',
+    'Travel',
+    'Goods',
+    'Lifestyle',
+    'Healthcare',
+    'Loan',
+    "Service",
+  ];
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      // Perform actions with the collected data
-      print('Category: $_category');
-      print('Price: $_price');
-      print('Customer Name: $_customerName');
-      // Add further logic here to process/store the data
+  Future<void> _submitForm() async {
+    var db = await DB.getDB();
+    var dataToInsert = {};
+    if (db != null) {
+      var collection = db.collection(cur_user);
+      if (_formKey.currentState!.validate()) {
+        _formKey.currentState!.save();
+        print('Category: $_category');
+        print('Price: $_price');
+        DateTime now = DateTime.now();
+        int year = now.year;
+        int month = now.month;
+        int day = now.day;
+        var dataToInsert = {
+          'category': _category,
+          'amount': _price,
+          'month': month,
+          'date': day,
+          'year': year,
+        };
+        await collection.insert(dataToInsert);
+        print(dataToInsert);
+      }
     }
   }
 

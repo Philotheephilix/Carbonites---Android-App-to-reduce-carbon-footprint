@@ -33,7 +33,10 @@ class ManagePage extends StatelessWidget {
   }
 
   ListView _managePageLayout() {
-    List <Color> buttonGradient = [const Color(0xFF9AECAB), const Color(0xFF85D896)];
+    List<Color> buttonGradient = [
+      const Color(0xFF9AECAB),
+      const Color(0xFF85D896)
+    ];
     return ListView(
       children: [
         Container(

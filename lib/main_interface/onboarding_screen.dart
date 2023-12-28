@@ -48,19 +48,33 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             onPageChanged: _onPageChanged,
             children: const [
               OnboardingPage(
-                title: 'Welcome to MyApp',
-                description: 'Discover the amazing features of our app.',
+                title: 'Welcome to Carbon PI',
+                description: '',
+                image: 'assets/images/CarbonPI_icon.png',
+              ),
+              OnboardingPage(
+                title: 'Small Footprint, Big Difference',
+                description: 'Empower change with a small carbon '
+                    'footprint using our convenient carbon '
+                    'calculator at your fingertips!',
                 image: 'assets/images/onboarding1.jpg',
               ),
               OnboardingPage(
-                title: 'Explore Features',
-                description:
-                    'Explore the various features and functionalities.',
+                title: "Carbon Footprint Slimming:"
+                    "A Planet’s Winning'",
+                description: 'Small acts, when multiplied by millions '
+                    'of people, can transform the world. '
+                    'Reduce your carbon footprint and leave a '
+                    'lasting impact on our planet.',
                 image: 'assets/images/onboarding2.jpg',
               ),
               OnboardingPage(
-                title: 'Get Started',
-                description: 'Get started now and enjoy using our app.',
+                title: 'Cut Carbon, Save Tomorrow',
+                description: 'Set personalized carbon goals and '
+                    'receive insightful recommendations as '
+                    'you embark on your journey to reduce '
+                    'your carbon footprint. Start making a '
+                    'positive impact today!',
                 image: 'assets/images/onboarding3.jpg',
               ),
             ],
@@ -69,8 +83,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             bottom: 20.0,
             right: 20.0,
             child: ElevatedButton(
-              onPressed: _currentPage == 2 ? _navigateToLoginPage : _nextPage,
-              child: Text(_currentPage == 2 ? 'Get Started' : 'Next'),
+              onPressed: _currentPage == 3 ? _navigateToLoginPage : _nextPage,
+              child: Text(_currentPage == 3 ? 'Get Started' : 'Next'),
             ),
           ),
         ],

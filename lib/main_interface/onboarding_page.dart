@@ -26,8 +26,10 @@ class OnboardingPage extends StatelessWidget {
           const SizedBox(height: 20.0),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: const TextStyle(
-              fontSize: 24.0,
+              fontFamily: 'Capriola',
+              fontSize: 22.0,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -36,6 +38,7 @@ class OnboardingPage extends StatelessWidget {
             description,
             textAlign: TextAlign.center,
             style: const TextStyle(
+              fontFamily: 'Capriola',
               fontSize: 16.0,
             ),
           ),

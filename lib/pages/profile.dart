@@ -213,58 +213,61 @@ class _ProfileGalleryState extends State<ProfileGallery> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 500,
-      height: 350,
-      color: Colors.transparent,
-      padding: const EdgeInsets.all(0.0),
-      child: ListView(
-        children: [
-          _pairedProfileButtons(1, 3),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(4, 5),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(6, 8),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(9, 10),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(11, 13),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(14, 15),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(16, 18),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(19, 20),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(21, 23),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(24, 25),
-          const SizedBox(
-            height: 10,
-          ),
-          _pairedProfileButtons(26, 28),
-          const SizedBox(
-            height: 10,
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        width: 500,
+        height: 350,
+        color: Colors.transparent,
+        padding: const EdgeInsets.all(0.0),
+        child: ListView(
+          children: [
+            _pairedProfileButtons(1, 3),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(4, 5),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(6, 8),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(9, 10),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(11, 13),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(14, 15),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(16, 18),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(19, 20),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(21, 23),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(24, 25),
+            const SizedBox(
+              height: 10,
+            ),
+            _pairedProfileButtons(26, 28),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

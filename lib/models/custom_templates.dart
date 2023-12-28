@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:pi_carbon_tracer/models/buttons.dart';
 
 class CustomTemplates extends StatefulWidget {
@@ -67,26 +69,43 @@ class _CustomTemplatesState extends State<CustomTemplates> {
                 ],
               ),
             ),
-            const SizedBox(height: 10.0,),
-            Center(
-              child: CustomPopupButton(
-                dimensions: const [200, 50],
-                content: Container(
-                  width: 500,
-                  height: 500,
-                  color: Colors.pink,
-                ),
-                label: 'Contribute',
-                labelSize: 16,
-                gradient: const [Color(0xFF74C69D), Color(0xFFB7E4C7)],
-              ),
+            const SizedBox(
+              height: 10.0,
             ),
+            const Center(
+              child: CustomPopupButton(
+                  dimensions: [200, 50],
+                  content: TemplateContent(),
+                  label: "Contribute",
+                  labelSize: 16,
+                  gradient: [Colors.blue, Colors.blue]),
+            )
           ],
         ),
       ),
     );
   }
 }
+
+class TemplateContent extends StatelessWidget {
+  const TemplateContent({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 500.0,
+      height: 400.0,
+      decoration: BoxDecoration(
+        color: Colors.pink,
+        borderRadius: BorderRadius.circular(20),
+      ),
+    );
+  }
+}
+
+
 
 class TargetPercentIndicator extends StatefulWidget {
   const TargetPercentIndicator({super.key});
@@ -127,7 +146,7 @@ class _TargetPercentIndicatorState extends State<TargetPercentIndicator> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    width: totalLength * (_targetPercentage/100),
+                    width: totalLength * (_targetPercentage / 100),
                     color: Colors.blue,
                   ),
                 ],

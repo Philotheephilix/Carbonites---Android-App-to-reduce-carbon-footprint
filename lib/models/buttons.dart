@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class IconAndTextButton extends StatelessWidget {
   final IconData icon;
@@ -133,6 +134,7 @@ class CustomPopupButton extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          contentPadding: EdgeInsets.zero,
           title: Text(
             label,
             style: const TextStyle(
@@ -143,6 +145,74 @@ class CustomPopupButton extends StatelessWidget {
           content: content,
         );
       },
+    );
+  }
+}
+
+class CustomButton extends StatefulWidget {
+  const CustomButton({
+    super.key,
+    required this.dimensions,
+    required this.label,
+    required this.labelSize,
+    required this.gradient,
+  });
+
+  final List<double> dimensions;
+  final String label;
+  final double labelSize;
+  final List<Color> gradient;
+
+  @override
+  State<CustomButton> createState() => _CustomButtonState();
+}
+
+class _CustomButtonState extends State<CustomButton> {
+  bool buttonState = false;
+
+  bool getButtonState() {
+    return buttonState;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: widget.dimensions[0],
+      height: widget.dimensions[1],
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: widget.gradient,
+        ),
+        borderRadius: BorderRadius.circular(widget.dimensions[1] * 0.5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 5,
+            blurRadius: 5,
+            offset: const Offset(3, 3),
+          ),
+        ],
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          setState(() {
+            buttonState = !buttonState;
+          });
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          shadowColor: Colors.transparent,
+        ),
+        child: Text(
+          widget.label,
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: 'Capriola',
+            fontSize: widget.labelSize,
+          ),
+        ),
+      ),
     );
   }
 }

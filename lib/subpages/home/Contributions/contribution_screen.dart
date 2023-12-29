@@ -12,8 +12,6 @@ class ContributeScreen extends StatefulWidget {
 }
 
 class _ContributeScreenState extends State<ContributeScreen> {
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -33,13 +31,15 @@ class _ContributeScreenState extends State<ContributeScreen> {
               fontFamily: 'Capriola',
             ),
             tabs: const [
-              Tab(text: 'Contribute',),
-              Tab(text: 'Community',),
+              Tab(
+                text: 'Contribute',
+              ),
+              Tab(
+                text: 'Community',
+              ),
             ],
             onTap: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
+              setState(() {});
             },
           ),
         ),

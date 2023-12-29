@@ -1,9 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/main.dart';
-import 'package:upi_india/upi_india.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:pi_carbon_tracer/subpages/manage/Upi_trans.dart';
 
 class Product {
@@ -38,7 +35,6 @@ class _MyTransactionPageState extends State<MyTransactionPage> {
 
   Future<void> _submitForm() async {
     var db = await DB.getDB();
-    var dataToInsert = {};
     if (db != null) {
       var collection = db.collection(cur_user);
       if (_formKey.currentState!.validate()) {

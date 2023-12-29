@@ -1,14 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:mongo_dart/mongo_dart.dart'
-    show Db, where, modify, UpdateOneOptions, Sort;
-import 'package:path_provider/path_provider.dart';
+import 'package:mongo_dart/mongo_dart.dart' show Db, where;
 
 import 'package:pi_carbon_tracer/main_interface/onboarding_screen.dart';
-import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
-import 'main_interface/onboarding_screen.dart';
-import 'dart:io';
 
 String capitalized = "";
 String cur_user = "";
@@ -43,22 +36,6 @@ Future<int> calculateTotalPriceForMonth(int targetMonth) async {
     return totalPrice;
   }
   return 0;
-}
-
-Future<void> createAppDataDirectory() async {
-  try {
-    Directory appDocDir = await getApplicationDocumentsDirectory();
-
-    Directory appDataDir = Directory('${appDocDir.path}/app_data');
-    if (!await appDataDir.exists()) {
-      await appDataDir.create(recursive: true);
-      print('App Data Directory created');
-    } else {
-      print('App Data Directory already exists');
-    }
-  } catch (e) {
-    print('Error creating directory: $e');
-  }
 }
 
 String Client_name = "";

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:pi_carbon_tracer/models/buttons.dart';
 
@@ -104,8 +103,6 @@ class TemplateContent extends StatelessWidget {
     );
   }
 }
-
-
 
 class TargetPercentIndicator extends StatefulWidget {
   const TargetPercentIndicator({super.key});

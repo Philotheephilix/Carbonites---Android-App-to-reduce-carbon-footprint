@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/main.dart';
+import 'package:pi_carbon_tracer/models/buttons.dart';
 import 'package:pi_carbon_tracer/widgets/chart_widgets_1.dart';
 
 Map categoryTotalAmounts = {};
@@ -78,7 +79,6 @@ class _ReportWidgetState extends State<ReportWidget> {
     [Colors.orange, 'service'],
     [Colors.red, 'loan'],
     [Colors.black, ''],
-
   ];
 
   final List<List<dynamic>> colorPercentData = [
@@ -165,13 +165,13 @@ class _ReportWidgetState extends State<ReportWidget> {
 
   Container _popupContainer() {
     return Container(
-                width: 300,
-                height: 200,
-                color: Colors.transparent,
-                child: PercentIndicators(
-                  dataList: colorCategoryData,
-                ),
-              );
+      width: 300,
+      height: 200,
+      color: Colors.transparent,
+      child: PercentIndicators(
+        dataList: colorCategoryData,
+      ),
+    );
   }
 }
 
@@ -222,13 +222,13 @@ class PercentIndicators extends StatelessWidget {
           width: 20,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: data[0],
+            color: Colors.grey,
           ),
         ),
         const SizedBox(
           width: 20,
         ),
-        Text(data[1]),
+        Text('hello bro '),
       ],
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:pi_carbon_tracer/models/custom_templates.dart';
 
@@ -11,7 +10,6 @@ class ContributePage extends StatefulWidget {
 }
 
 class _ContributePageState extends State<ContributePage> {
-
   @override
   Widget build(BuildContext context) {
     return Container(

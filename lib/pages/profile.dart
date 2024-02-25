@@ -48,7 +48,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           child: _profileBase(),
         ));
-        ));
   }
 
   // this method contains the foundation of this page

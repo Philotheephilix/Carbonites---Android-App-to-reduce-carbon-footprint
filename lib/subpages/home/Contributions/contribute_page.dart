@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:pi_carbon_tracer/models/custom_templates.dart';
 

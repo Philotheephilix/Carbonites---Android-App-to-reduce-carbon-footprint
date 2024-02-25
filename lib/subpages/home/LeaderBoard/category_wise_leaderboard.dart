@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/main.dart';
 import 'package:pi_carbon_tracer/widgets/rank_display_widget.dart';
-import 'package:mongo_dart/mongo_dart.dart'
-    show Db, where, modify, UpdateOneOptions, Sort;
+import 'package:mongo_dart/mongo_dart.dart' show where;
 
 import '../../../models/rank_ladder.dart';
 

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upi_india/upi_india.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/services.dart';
-import 'package:pi_carbon_tracer/subpages/manage/new_payments.dart';
 
 Map<String, String> upiData = {};
 void main() => runApp(MyApp());
@@ -124,6 +121,7 @@ class _HmePageState extends State<HmePage> {
     if (apps == null)
       return Center(child: CircularProgressIndicator());
     else if (apps!.length == 0)
+      // ignore: curly_braces_in_flow_control_structures
       return Center(
         child: Text(
           "No apps found to handle transaction.",
@@ -134,7 +132,7 @@ class _HmePageState extends State<HmePage> {
       return Align(
         alignment: Alignment.topCenter,
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Wrap(
             children: apps!.map<Widget>((UpiApp app) {
               return GestureDetector(

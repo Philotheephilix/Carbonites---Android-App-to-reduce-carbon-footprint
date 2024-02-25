@@ -104,8 +104,6 @@ class TemplateContent extends StatelessWidget {
   }
 }
 
-
-
 class TargetPercentIndicator extends StatefulWidget {
   const TargetPercentIndicator({super.key});
 

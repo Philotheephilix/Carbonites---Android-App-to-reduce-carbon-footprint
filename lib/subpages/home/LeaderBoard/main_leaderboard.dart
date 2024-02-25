@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mongo_dart/mongo_dart.dart'
-    show Db, where, modify, UpdateOneOptions, Sort;
+import 'package:mongo_dart/mongo_dart.dart' show where;
 import 'package:pi_carbon_tracer/main.dart';
-
-import '../../../models/rank_ladder.dart';
 
 int place_cur_user = 1;
 

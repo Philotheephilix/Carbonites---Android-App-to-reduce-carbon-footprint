@@ -10,7 +10,6 @@ class ContributePage extends StatefulWidget {
 }
 
 class _ContributePageState extends State<ContributePage> {
-
   @override
   Widget build(BuildContext context) {
     return Container(

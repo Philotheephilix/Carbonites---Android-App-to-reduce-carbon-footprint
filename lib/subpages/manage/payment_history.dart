@@ -27,7 +27,7 @@ class _PaymentHistoryPageState extends State<PaymentHistoryPage> {
       final documents = await collection.find().toList();
       for (var doc in documents) {
         String fieldsConcatenated =
-            '${doc['category']},${doc['amount']},${doc['month']}';
+             '${doc['category']},${doc['amount']},${doc['month']},${doc['date']},${doc['year']} ';
         transactions.add(fieldsConcatenated);
       }
     }
@@ -172,8 +172,9 @@ class LegerView extends StatelessWidget {
               final transaction = transactions[index];
               List<String> transactionDetails = transaction.split(',');
               return ListTile(
-                title: Text('Date: ${transactionDetails[2]}',
-                    style: const TextStyle(fontSize: 20)),
+                 title: Text(
+                      'Date: ${transactionDetails[3]}/${transactionDetails[2]}/${transactionDetails[4]}',
+                      style: TextStyle(fontSize: 18)),
                 subtitle: Text('Category: ${transactionDetails[0]}',
                     style: const TextStyle(fontSize: 16)),
                 trailing: Text(

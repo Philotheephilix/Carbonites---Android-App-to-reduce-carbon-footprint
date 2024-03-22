@@ -113,7 +113,7 @@ class _HmePageState extends State<HmePage> {
       receiverName: '${upiData['pn']}',
       transactionRefId: 'TestingUpiIndiaPlugin',
       transactionNote: 'Not actual. Just an example.',
-      amount: widget.price,
+      amount: 1,
     );
   }
 

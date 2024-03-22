@@ -4,6 +4,7 @@ import 'package:pi_carbon_tracer/subpages/home/Contributions/contribution_screen
 import 'package:pi_carbon_tracer/subpages/home/LeaderBoard/leader_board.dart';
 import 'package:pi_carbon_tracer/subpages/home/my_goals.dart';
 import 'package:pi_carbon_tracer/subpages/home/ocr.dart';
+import 'package:pi_carbon_tracer/subpages/home/pi_store.dart';
 
 class UtilityButtons extends StatelessWidget {
   const UtilityButtons({super.key});
@@ -41,6 +42,10 @@ class UtilityButtons extends StatelessWidget {
                   ),
                   SizedBox(
                     width: 10,
+                  ),
+                  Buttons(
+                    label: 'Pi Store',
+                    page: PiStore(),
                   ),
                   Buttons(
                     label: 'Goals',

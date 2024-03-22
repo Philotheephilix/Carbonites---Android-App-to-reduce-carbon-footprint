@@ -10,12 +10,34 @@ import '../models/percentage_circle.dart';
 
 import 'package:pi_carbon_tracer/widgets/chart_widgets_1.dart';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Future<double> value = storeperc();
 
 class StatsPage extends StatefulWidget {
-  const StatsPage({
-    Key? key,
-  }) : super(key: key);
+  const StatsPage({Key? key}) : super(key: key);
 
   @override
   _StatsPageState createState() => _StatsPageState();
@@ -59,6 +81,8 @@ class _StatsPageState extends State<StatsPage> {
   }
 
   double calculateLowPercentage(double value, int maxValue) {
+
+
     // Calculate the low percentage based on the given value and max value
     double lowPercentage = (value / maxValue) * 100;
     return lowPercentage;
@@ -117,9 +141,6 @@ class _StatsPageState extends State<StatsPage> {
             ),
             const SizedBox(
               height: 5,
-            ),
-            const ReportWidget(
-              score: 62,
             ),
             ReportWidget(
               score: piPoints.toInt(),

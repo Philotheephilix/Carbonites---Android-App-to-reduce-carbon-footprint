@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:pi_carbon_tracer/widgets/report_widget.dart';
+import 'package:pi_carbon_tracer/main.dart';
 
 import '../models/menu_drawer.dart';
 import '../widgets/common_top_bar.dart';
@@ -9,30 +9,6 @@ import '../widgets/custom_chart_widget_1.dart';
 import '../models/percentage_circle.dart';
 
 import 'package:pi_carbon_tracer/widgets/chart_widgets_1.dart';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Future<double> value = storeperc();
 
@@ -81,8 +57,6 @@ class _StatsPageState extends State<StatsPage> {
   }
 
   double calculateLowPercentage(double value, int maxValue) {
-
-
     // Calculate the low percentage based on the given value and max value
     double lowPercentage = (value / maxValue) * 100;
     return lowPercentage;
@@ -142,11 +116,41 @@ class _StatsPageState extends State<StatsPage> {
             const SizedBox(
               height: 5,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _salaryWidget(),
+                _salaryWidget(),
+              ],
+            ),
+            const SizedBox(
+              height: 5,
+            ),
             ReportWidget(
               score: piPoints.toInt(),
+              //categoryPoints: getCategoryPoints(),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Container _salaryWidget() {
+    return Container(
+      width: 180,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            blurRadius: 10,
+            spreadRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
     );
   }

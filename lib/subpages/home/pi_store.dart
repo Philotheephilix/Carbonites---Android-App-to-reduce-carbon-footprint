@@ -28,8 +28,10 @@ class PiStore extends StatelessWidget {
   }
 
   Future<void> _launchWebsite() async {
-    const url = 'https://google.com'; // Replace with your website URL
+    const url = 'https://www.google.com'; // Replace with your website URL
+    // ignore: deprecated_member_use
     if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
       await launch(url);
     } else {
       throw 'Could not launch $url';

@@ -7,23 +7,6 @@
         android:label="carbon_pi"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
-        <!-- Provide required visibility configuration for API level 30 and above -->
-<queries>
-  <!-- If your app checks for SMS support -->
-  <intent>
-    <action android:name="android.intent.action.VIEW" />
-    <data android:scheme="sms" />
-  </intent>
-
-  <intent>
-    <action android:name="android.intent.action.VIEW" />
-    <data android:scheme="tel" />
-  </intent>
-  <!-- If your application checks for inAppBrowserView launch mode support -->
-  <intent>
-    <action android:name="android.support.customtabs.action.CustomTabsService" />
-  </intent>
-</queries>
         <activity
             android:name=".MainActivity"
             android:exported="true"

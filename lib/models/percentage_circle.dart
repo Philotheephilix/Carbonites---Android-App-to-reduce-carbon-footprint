@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PercentageCircle extends StatelessWidget {
-  final double percentage;
+  final int percentage;
   final Color color;
 
   const PercentageCircle({
@@ -20,7 +20,7 @@ class PercentageCircle extends StatelessWidget {
           _percentageCircle(color),
           Center(
             child: Text(
-              percentage.toString(),
+              percentage.toString()+"%",
               style: const TextStyle(
                 color: Colors.grey,
                 fontFamily: 'Capriola',

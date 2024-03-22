@@ -22,8 +22,8 @@ class StatsPage extends StatefulWidget {
 class _StatsPageState extends State<StatsPage> {
   late double value;
   late double piPoints = 0;
-  late double direct = 0;
-  late double indirect = 0;
+  late int direct = 0;
+  late int indirect = 0;
   late Map<String, double> categoryTotalAmounts = {};
   @override
   void initState() {
@@ -41,14 +41,14 @@ class _StatsPageState extends State<StatsPage> {
         piPoints = calculateLowPercentage(value, 16000).toInt().toDouble();
         direct = calculateLowPercentage(
             categoryTotalAmounts['Travel']! + categoryTotalAmounts['Food']!,
-            7000);
+            7000).toInt();
         indirect = calculateLowPercentage(
             categoryTotalAmounts['Travel']! +
                 categoryTotalAmounts['Food']! +
                 categoryTotalAmounts['Goods']! +
                 categoryTotalAmounts['Service']! +
                 categoryTotalAmounts['Loan']!,
-            11000);
+            11000).toInt();
       });
     } catch (error) {
       print('Error: $error');

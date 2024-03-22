@@ -169,14 +169,14 @@ class CategoryWiseData {
       var cursor = await collection
           .find(
             where.sortBy('Food',
-                descending: false), // Replace 'fieldName' with your field name
+                descending: true), // Replace 'fieldName' with your field name
           )
           .toList();
 
       // Extracting data from MongoDB cursor and transforming it into the required format
       List<List<String>> names = [];
       int i = 1;
-      for (var entry in cursor) {
+      for (var entry in cursor) { 
         List<String> rowData = [
           entry['name']?.toString() ?? '', // Ensure name is converted to String
           '${((entry['Food'] ?? 0) - 1000).toInt().abs()} pts'
@@ -204,7 +204,7 @@ class CategoryWiseData {
       var cursor = await collection
           .find(
             where.sortBy('Travel',
-                descending: false), // Replace 'fieldName' with your field name
+                descending: true), // Replace 'fieldName' with your field name
           )
           .toList();
 
@@ -239,7 +239,7 @@ class CategoryWiseData {
       var cursor = await collection
           .find(
             where.sortBy('Goods',
-                descending: false), // Replace 'fieldName' with your field name
+                descending: true), // Replace 'fieldName' with your field name
           )
           .toList();
 
@@ -274,7 +274,7 @@ class CategoryWiseData {
       var cursor = await collection
           .find(
             where.sortBy('Service',
-                descending: false), // Replace 'fieldName' with your field name
+                descending: true), // Replace 'fieldName' with your field name
           )
           .toList();
 
@@ -309,7 +309,7 @@ class CategoryWiseData {
       var cursor = await collection
           .find(
             where.sortBy('Loan',
-                descending: false), // Replace 'fieldName' with your field name
+                descending: true), // Replace 'fieldName' with your field name
           )
           .toList();
 
@@ -344,7 +344,7 @@ class CategoryWiseData {
       var cursor = await collection
           .find(
             where.sortBy('Lifestyle',
-                descending: false), // Replace 'fieldName' with your field name
+                descending: true), // Replace 'fieldName' with your field name
           )
           .toList();
 
@@ -379,7 +379,7 @@ class CategoryWiseData {
       var cursor = await collection
           .find(
             where.sortBy('Healthcare',
-                descending: false), // Replace 'fieldName' with your field name
+                descending: true), // Replace 'fieldName' with your field name
           )
           .toList();
 

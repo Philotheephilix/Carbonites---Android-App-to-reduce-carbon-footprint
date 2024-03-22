@@ -1,11 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class ReportWidget extends StatefulWidget {
   const ReportWidget({
     super.key,
     required this.score,
+    //required this.categoryPoints,
   });
 
   final int score;
@@ -15,6 +14,7 @@ class ReportWidget extends StatefulWidget {
 }
 
 class _ReportWidgetState extends State<ReportWidget> {
+  //final Map<String, double> categoryPoints;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,7 +52,9 @@ class _ReportWidgetState extends State<ReportWidget> {
                   height: 140,
                   color: Colors.transparent,
                   padding: const EdgeInsets.all(20),
-                  child: const PercentIndicators(),
+                  child: PercentIndicators(
+                      //points: categoryPoints
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -76,7 +78,10 @@ class _ReportWidgetState extends State<ReportWidget> {
 class PercentIndicators extends StatefulWidget {
   const PercentIndicators({
     super.key,
+    //required this.points,
   });
+
+  //final Map<String, double> points;
 
   @override
   State<PercentIndicators> createState() => _PercentIndicatorsState();
@@ -91,9 +96,15 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _dataElement(Colors.pink, 62),
-            _dataElement(Colors.green, 62),
-            _dataElement(Colors.red, 62),
+            _dataElement(Colors.pink, 54
+                //widget.points["Food"]
+            ),
+            _dataElement(Colors.green, 18
+                //widget.points["Goods"]
+              ),
+            _dataElement(Colors.red, 6
+              //widget.points["Loan"]
+            ),
           ],
         ),
         const SizedBox(
@@ -102,16 +113,22 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _dataElement(Colors.blue, 62),
-            _dataElement(Colors.orange, 62),
-            _dataElement(Colors.redAccent, 62)
+            _dataElement(Colors.blue, 12
+                //widget.points["Travel"]
+            ),
+            _dataElement(Colors.orange, 10
+                //widget.points["Service"]
+            ),
+            _dataElement(Colors.redAccent, 0
+                //widget.points["Life Style"]
+            )
           ],
         ),
       ],
     );
   }
 
-  Row _dataElement(Color color, int percent) {
+  Row _dataElement(Color color, double? percent) {
     return Row(
       children: [
         Container(
@@ -162,25 +179,25 @@ class _CategoryWisePercentBarState extends State<CategoryWisePercentBar> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: 62,
+                width: 54,
                 decoration: const BoxDecoration(
                   color: Colors.pink,
                 ),
               ),
               Container(
-                width: 62,
+                width: 18,
                 color: Colors.blue,
               ),
               Container(
-                width: 62,
+                width: 6,
                 color: Colors.green,
               ),
               Container(
-                width: 62,
+                width: 12,
                 color: Colors.orange,
               ),
               Container(
-                width: 62,
+                width: 10,
                 color: Colors.red,
               ),
             ],

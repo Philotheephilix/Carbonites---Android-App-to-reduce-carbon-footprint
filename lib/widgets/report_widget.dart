@@ -96,13 +96,13 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _dataElement(Colors.pink, 54
+            _dataElement(Colors.pink, 'Travel'
                 //widget.points["Food"]
             ),
-            _dataElement(Colors.green, 18
+            _dataElement(Colors.green, 'Goods'
                 //widget.points["Goods"]
               ),
-            _dataElement(Colors.red, 6
+            _dataElement(Colors.red, 'Loan'
               //widget.points["Loan"]
             ),
           ],
@@ -113,13 +113,13 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _dataElement(Colors.blue, 12
+            _dataElement(Colors.blue, 'Food'
                 //widget.points["Travel"]
             ),
-            _dataElement(Colors.orange, 10
+            _dataElement(Colors.orange, 'Medicine'
                 //widget.points["Service"]
             ),
-            _dataElement(Colors.redAccent, 0
+            _dataElement(Colors.redAccent, 'Life Style'
                 //widget.points["Life Style"]
             )
           ],
@@ -128,7 +128,7 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
     );
   }
 
-  Row _dataElement(Color color, double? percent) {
+  Row _dataElement(Color color, String percent) {
     return Row(
       children: [
         Container(
@@ -142,7 +142,7 @@ class _PercentIndicatorsState extends State<PercentIndicators> {
         const SizedBox(
           width: 20,
         ),
-        Text(percent.toString()),
+        Text(percent),
       ],
     );
   }
